@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Kalo Finance — visual assets demo and landing page">
+  <title>Kalo Finance</title>
+  <link rel="stylesheet" href="src/styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="logo" href="#" aria-label="Kalo Finance">Kalo Finance</a>
+      <nav aria-label="Primary">
+        <ul class="nav">
+          <li><a href="#features">Features</a></li>
+          <li><a href="#gallery">Gallery</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero" id="home">
+      <div class="hero__content">
+        <h1>Beautiful, secure finance UX — built for modern users</h1>
+        <p class="lead">A lightweight demo page showing your image assets and a responsive layout. Click any image to open a larger preview.</p>
+        <p>
+          <a class="btn" href="#gallery">View Gallery</a>
+          <a class="btn btn--ghost" href="#features">Learn more</a>
+        </p>
+      </div>
+      <div class="hero__media">
+        <img src="assets/Kalo%20page%20img.png" alt="Kalo Finance preview" loading="lazy">
+      </div>
+    </section>
+
+    <section id="features" class="features">
+      <h2>Features</h2>
+      <div class="grid">
+        <article class="feature">
+          <h3>Responsive by default</h3>
+          <p>Mobile-first layout that adapts smoothly across screen sizes.</p>
+        </article>
+        <article class="feature">
+          <h3>Accessible</h3>
+          <p>Keyboard-navigable lightbox and ARIA attributes for screen readers.</p>
+        </article>
+        <article class="feature">
+          <h3>Simple integrations</h3>
+          <p>Drop images into <code>/assets</code> and they will appear in the gallery.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="gallery" class="gallery" aria-live="polite">
+      <!-- Gallery will be rendered here by src/main.js -->
+      <noscript>
+        <p class="muted">JavaScript is required to render the interactive gallery. You can still view the images below.</p>
+        <div class="grid">
+          <img src="assets/Kalo%20page%20img.png" alt="Kalo Finance preview" style="width:100%;height:auto;border-radius:8px">
+        </div>
+      </noscript>
+    </section>
+
+    <section id="contact" class="contact">
+      <h2>Contact</h2>
+      <p class="muted">For this demo, use <a href="mailto:hello@kalo.example">hello@kalo.example</a></p>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <small>&copy; Kalo Finance • Demo</small>
+    </div>
+  </footer>
+
+  <!-- Lightbox provided by src/main.js -->
+  <script type="module" src="src/main.js"></script>
+</body>
+</html>
