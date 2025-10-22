@@ -1,6 +1,6 @@
 /* Base tokens (used by hero and future sections) */
 :root{
-  --bg: linear-gradient(180deg,#071029 0%, #081726 100%);
+  bg: linear-gradient(180deg,#071029 0%, #081726 100%);
   --surface: rgba(255,255,255,0.02);
   --muted: #94a3b8;
   --accent: #06b6d4;
