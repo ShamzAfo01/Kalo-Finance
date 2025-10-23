@@ -1,4 +1,4 @@
-<<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -176,25 +176,66 @@
     }
 
     .hello-text {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: 'Geist', sans-serif;
-  font-size: 88px;
-  font-weight: 500;
-  color: #666666;
-  letter-spacing: -4px;
-  gap: 24px;
+      font-family: 'Great Vibes', cursive;
+      font-size: 28px;
+      margin-top: 250px;
+      color: #979797;
+    }
+
+    .static-text {
+      font-family: 'Geist', sans-serif;
+      font-weight: 300;
+      font-size: 44px;
+      color: #d9d9d9;
+      margin-top: 62px;
+      text-align: center;
+    }
+
+    .ribbon-container {
+      width: 100%;
+      overflow: hidden;
+      background-color: #f0f0f0;
+      padding: 10px 0;
+      box-sizing: border-box;
+      margin-top: 64px;
+    }
+
+    .ribbon {
+      white-space: nowrap;
+      display: inline-block;
+      animation: ribbon-scroll 15s linear infinite;
+    }
+
+    .ribbon p {
+      display: inline-block;
+      margin: 0;
+      font-size: 20px;
+      color: #333;
+    }
+
+    @keyframes ribbon-scroll {
+      0% {
+        transform: translateX(100%);
+      }
+      100% {
+        transform: translateX(-100%);
+      }
+    }
+
+    @font-face {
+  font-family: 'Geist';
+  src: url('/fonts/Geist-Light.woff2') format('woff2');
+  font-weight: 300; /* Light */
+  font-style: normal;
 }
 
-.wreath {
-  width: 100px;
-  height: auto;
+@font-face {
+  font-family: 'Geist';
+  src: url('/fonts/Geist-Regular.woff2') format('woff2');
+  font-weight: 400; /* Regular */
+  font-style: normal;
 }
 
-.right-wreath {
-  transform: scaleX(-1);
-}
   </style>
 </head>
 <body>
@@ -253,9 +294,24 @@
   </section>
 
   <div class="hello-text">
-  <img src="assets/leafy-wreath.svg" alt="Left Wreath" class="wreath left-wreath">
-  <span>Hello</span>
-  <img src="assets/leafy-wreath.svg" alt="Right Wreath" class="wreath right-wreath">
-</div>
+    <svg class="wreath" width="100" height="100" viewBox="0 0 200 200">
+      <path d="M100 0 C 50 50, 50 150, 100 200 C 150 150, 150 50, 100 0 Z M100 20 C 130 60, 130 140, 100 180 C 70 140, 70 60, 100 20 Z" fill="#979797"/>
+    </svg>
+    Hello
+    <svg class="wreath" width="100" height="100" viewBox="0 0 200 200" style="transform: scaleX(-1);">
+      <path d="M100 0 C 50 50, 50 150, 100 200 C 150 150, 150 50, 100 0 Z M100 20 C 130 60, 130 140, 100 180 C 70 140, 70 60, 100 20 Z" fill="#979797"/>
+    </svg>
+  </div>
+
+  <div class="static-text">
+    We recognise that each client’s situation is unique and we therefore focus on providing bespoke solutions tailored to our client’s individual needs and objectives.
+  </div>
+
+  <div class="ribbon-container">
+    <div class="ribbon">
+      <p>Your text here - Your text here - Your text here - Your text here</p>
+    </div>
+  </div>
+
 </body>
 </html>
