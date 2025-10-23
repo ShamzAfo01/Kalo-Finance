@@ -6,6 +6,7 @@
   <title>Kalo Navbar + Hero Cards</title>
   <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@700&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Geist:wght@500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
   <style>
     body {
       margin: 0;
@@ -169,10 +170,31 @@
     }
 
     .trustpilot-text {
-      font-size: 12px;
+      font-size: 11px;
       color: #666;
-      margin-top: 2px;
+      margin-top: 4px;
     }
+
+    .hello-text {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Geist', sans-serif;
+  font-size: 88px;
+  font-weight: 500;
+  color: #666666;
+  letter-spacing: -4px;
+  gap: 24px;
+}
+
+.wreath {
+  width: 100px;
+  height: auto;
+}
+
+.right-wreath {
+  transform: scaleX(-1);
+}
   </style>
 </head>
 <body>
@@ -229,5 +251,11 @@
     <img src="assets/Kalo HS Card 3.png" alt="Card 3" class="card3">
     <img src="assets/Kalo HS Card 4.png" alt="Card 4" class="card4">
   </section>
+
+  <div class="hello-text">
+  <img src="assets/leafy-wreath.svg" alt="Left Wreath" class="wreath left-wreath">
+  <span>Hello</span>
+  <img src="assets/leafy-wreath.svg" alt="Right Wreath" class="wreath right-wreath">
+</div>
 </body>
 </html>
