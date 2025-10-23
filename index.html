@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" position="-3000"/>
   <title>Kalo Navbar + Hero Cards</title>
   <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@700&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Geist:wght@500&display=swap" rel="stylesheet">
@@ -189,28 +189,41 @@
       color: #d9d9d9;
       margin-top: 62px;
       text-align: center;
+      line-height: 1.5;
     }
 
     .ribbon-container {
       width: 100%;
       overflow: hidden;
-      background-color: #f0f0f0;
       padding: 10px 0;
       box-sizing: border-box;
-      margin-top: 64px;
+      margin-top: 180px;
+    }
+
+    .ribbon-1 {
+      background-color: #28A601;
+      color: #fff;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
     .ribbon {
       white-space: nowrap;
-      display: inline-block;
+      display: flex;
+      flex-direction: column;
       animation: ribbon-scroll 15s linear infinite;
     }
 
     .ribbon p {
       display: inline-block;
       margin: 0;
-      font-size: 20px;
-      color: #333;
+      font-family: 'Geist', sans-serif;
+      font-weight: 600;
+      font-size: 18px;
+      letter-spacing: -2px;
+      color: #ffffff;
     }
 
     @keyframes ribbon-scroll {
@@ -304,12 +317,13 @@
   </div>
 
   <div class="static-text">
-    We recognise that each client’s situation is unique and we therefore focus on providing bespoke solutions tailored to our client’s individual needs and objectives.
+    We recognise that each client’s situation is <br> unique and we therefore focus on providing <br> bespoke solutions tailored to our client’s<br>individual needs and objectives.1
   </div>
 
   <div class="ribbon-container">
     <div class="ribbon">
-      <p>Your text here - Your text here - Your text here - Your text here</p>
+      <p class="ribbon-line-1 ribbon-1">Your text here - Your text here - Your text here - Your text here</p>
+      <p class="ribbon-line-2">Your second line of text here - Your second line of text here</p>
     </div>
   </div>
 
