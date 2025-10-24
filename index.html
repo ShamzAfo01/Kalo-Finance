@@ -112,10 +112,10 @@
     }
 
     /* Card positions */
-    .card1 { left: -28px; top: 248px; }
-    .card2 { left: 1480px; top: 339px; }
-    .card3 { left: 1440px; top: 270px; }
-    .card4 { left: -24px; top: 380px; }
+    .card1 { left: 24px; top: 248px; }
+    .card2 { left: 1320px; top: 339px; }
+    .card3 { left: 1360px; top: 270px; }
+    .card4 { left: 32px; top: 380px; }
 
     /* HERO TEXT */
     .hero-text {
@@ -182,14 +182,24 @@
       color: #979797;
     }
 
-    .static-text {
+    .scrolling-text {
       font-family: 'Geist', sans-serif;
       font-weight: 300;
-      font-size: 44px;
-      color: #d9d9d9;
+      font-size: 33px;
       margin-top: 62px;
       text-align: center;
-      line-height: 1.5;
+    }
+
+    .scrolling-line {
+      display: block;
+      color: #e3e3e3;
+      opacity: 0;
+      transition: all 0.5s ease-in-out;
+    }
+
+    .scrolling-line.visible {
+      color: #333333;
+      opacity: 1;
     }
 
     .ribbon-container {
@@ -202,28 +212,15 @@
 
     .ribbon {
       white-space: nowrap;
-      display: flex;
-      flex-direction: column;
+      display: inline-block;
       animation: ribbon-scroll 15s linear infinite;
-    }
-
-    .ribbon-1 {
-      background-color: #28A601;
-      color: #fff;
-      height: 60px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
     }
 
     .ribbon p {
       display: inline-block;
-      margin: 24px;
-      font-family: 'Geist', sans-serif;
-      font-weight: 400;
-      font-size: 18px;
-      letter-spacing: 0px;
-      color: #ffffff;
+      margin: 0;
+      font-size: 20px;
+      color: #333;
     }
 
     @keyframes ribbon-scroll {
@@ -316,14 +313,15 @@
     </svg>
   </div>
 
-  <div class="static-text">
-    We recognise that each client’s situation is <br> unique and we therefore focus on providing <br> bespoke solutions tailored to our client’s<br>individual needs and objectives.
+  <div class="subtext" id="subtext">
+    <span class="line">We recognise that each client’s situation is unique and we</span>
+    <span class="line">therefore focus on providing bespoke solutions tailored to our client’s individual needs and</span>
+    <span class="line">objectives.</span>
   </div>
 
   <div class="ribbon-container">
     <div class="ribbon">
-      <p class="ribbon-line-1 ribbon-1">Your text here - Your text here - Your text here - Your text here</p>
-      <p class="ribbon-line-2">Your second line of text here - Your second line of text here</p>
+      <p>Your text here - Your text here - Your text here - Your text here</p>
     </div>
   </div>
 
