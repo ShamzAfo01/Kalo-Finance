@@ -202,28 +202,22 @@
       opacity: 1;
     }
 
-    .scrolling-line.visible {
-      color: #333333;
-      opacity: 1;
-    }
-
     .scrolling-text {
       font-family: 'Geist', sans-serif;
       font-weight: 300;
       font-size: 33px;
       margin-top: 62px;
       text-align: center;
-      line-height: 1.5;
     }
 
-    .scrolling-word {
-      display: inline-block;
-      color: #e4e4e4;
+    .scrolling-line {
+      display: block;
+      color: #e3e3e3;
       opacity: 0;
-      transition: color 1s ease, opacity 1s ease;
+      transition: all 1.5s ease-in-out;
     }
 
-    .scrolling-word.visible {
+    .scrolling-line.visible {
       color: #333333;
       opacity: 1;
     }
@@ -339,8 +333,13 @@
     </svg>
   </div>
 
+  <div class="subtext" id="subtext">
+    <span class="line">We recognise that each client’s situation is <br>
+    <span class="line"> unique and we therefore focus on providing <br> bespoke solutions tailored to our client’s <br> individual needs and objectives</span>
+  </div>
+
   <div class="scrolling-text" id="scrolling-text">
-    We recognise that each client’s situation is <br>unique and we therefore focus on providing <br>bespoke solutions tailored to our client’s <br>individual needs and objectives.
+    We are a team of independent financial advisors.
   </div>
 
 <script>
@@ -349,13 +348,17 @@
     const lines = document.querySelectorAll('.subtext .line');
     if(!lines.length) return;
 
+    // Options: trigger when 60% of the line is visible
     const io = new IntersectionObserver((entries, observer) => {
       entries.forEach(entry => {
         if(entry.isIntersecting){
           const el = entry.target;
+          // Add visible class with a staggered small delay based on index
           const index = Array.prototype.indexOf.call(lines, el);
+          // Use data-delay to allow CSS transition-delay if needed
           el.style.transitionDelay = (index * 120) + 'ms';
           el.classList.add('visible');
+          // Unobserve once it's visible to avoid re-triggering
           observer.unobserve(el);
         }
       });
