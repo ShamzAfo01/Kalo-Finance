@@ -222,6 +222,27 @@
       opacity: 1;
     }
 
+    .scrolling-text {
+      font-family: 'Geist', sans-serif;
+      font-weight: 300;
+      font-size: 33px;
+      margin-top: 62px;
+      text-align: center;
+      line-height: 1.5;
+    }
+
+    .scrolling-word {
+      display: inline-block;
+      color: #e4e4e4;
+      opacity: 0;
+      transition: color 1s ease, opacity 1s ease;
+    }
+
+    .scrolling-word.visible {
+      color: #333333;
+      opacity: 1;
+    }
+
     .ribbon-container {
       width: 100%;
       overflow: hidden;
@@ -338,6 +359,10 @@
     <span class="line"> unique and we therefore focus on providing <br> bespoke solutions tailored to our client’s <br> individual needs and objectives</span>
   </div>
 
+  <div class="scrolling-text" id="scrolling-text">
+    We are a team of independent financial advisors.
+  </div>
+
 <script>
   // IntersectionObserver to animate each .line when it scrolls into view.
   (function(){
@@ -361,6 +386,41 @@
     }, { threshold: 0.5 });
 
     lines.forEach(l => io.observe(l));
+  })();
+
+  // Word reveal animation for scrolling-text
+  (function(){
+    const scrollingText = document.getElementById('scrolling-text');
+    if (!scrollingText) return;
+
+    const words = scrollingText.textContent.trim().split(' ');
+    scrollingText.innerHTML = ''; // Clear existing content
+
+    words.forEach(word => {
+      const wordSpan = document.createElement('span');
+      wordSpan.className = 'scrolling-word';
+      wordSpan.textContent = word;
+      scrollingText.appendChild(wordSpan);
+      scrollingText.appendChild(document.createTextNode(' ')); // Add space between words
+    });
+
+    const wordSpans = scrollingText.querySelectorAll('.scrolling-word');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          let delay = 0;
+          wordSpans.forEach(span => {
+            setTimeout(() => {
+              span.classList.add('visible');
+            }, delay);
+            delay += 500;
+          });
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.5 });
+
+    observer.observe(scrollingText);
   })();
 </script>
 </body>

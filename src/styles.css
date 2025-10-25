@@ -1,8 +1,0 @@
-.word {
-  color: #e4e4e4;
-  transition: color 1s ease;
-}
-
-.word.revealed {
-  color: #333333;
-}
