@@ -188,36 +188,17 @@
       font-size: 33px;
       margin-top: 62px;
       text-align: center;
+      line-height: 1.5;
     }
 
-    .line {
-      display: block;
-      color: #e3e3e3;
+    .subtext-word {
+      display: inline-block;
+      color: #e4e4e4;
       opacity: 0;
-      transition: all 0.5s ease-in-out;
+      transition: color 1s ease, opacity 1s ease;
     }
 
-    .line.visible {
-      color: #333333;
-      opacity: 1;
-    }
-
-    .scrolling-text {
-      font-family: 'Geist', sans-serif;
-      font-weight: 300;
-      font-size: 33px;
-      margin-top: 62px;
-      text-align: center;
-    }
-
-    .scrolling-line {
-      display: block;
-      color: #e3e3e3;
-      opacity: 0;
-      transition: all 1.5s ease-in-out;
-    }
-
-    .scrolling-line.visible {
+    .subtext-word.visible {
       color: #333333;
       opacity: 1;
     }
@@ -324,13 +305,9 @@
   </section>
 
   <div class="hello-text">
-    <svg class="wreath" width="100" height="100" viewBox="0 0 200 200">
-      <path d="M100 0 C 50 50, 50 150, 100 200 C 150 150, 150 50, 100 0 Z M100 20 C 130 60, 130 140, 100 180 C 70 140, 70 60, 100 20 Z" fill="#979797"/>
-    </svg>
+    <img src="./assets/Vector laurel wreath.jpg" class="wreath" width="100" height="100">
     Hello
-    <svg class="wreath" width="100" height="100" viewBox="0 0 200 200" style="transform: scaleX(-1);">
-      <path d="M100 0 C 50 50, 50 150, 100 200 C 150 150, 150 50, 100 0 Z M100 20 C 130 60, 130 140, 100 180 C 70 140, 70 60, 100 20 Z" fill="#979797"/>
-    </svg>
+    <img src="./assets/Vector laurel wreath.jpg" class="wreath" width="100" height="100" style="transform: scaleX(-1);">
   </div>
 
   <div class="subtext" id="subtext">
@@ -338,52 +315,30 @@
     <span class="line"> unique and we therefore focus on providing <br> bespoke solutions tailored to our client’s <br> individual needs and objectives</span>
   </div>
 
-  <div class="scrolling-text" id="scrolling-text">
-    We are a team of independent financial advisors.
-  </div>
-
 <script>
-  // IntersectionObserver to animate each .line when it scrolls into view.
-  (function(){
-    const lines = document.querySelectorAll('.subtext .line');
-    if(!lines.length) return;
+  // Word reveal animation for subtext
+//   (function(){
+//     const subtext = document.getElementById('subtext');
+//     if (!subtext) return;
 
-    // Options: trigger when 60% of the line is visible
-    const io = new IntersectionObserver((entries, observer) => {
-      entries.forEach(entry => {
-        if(entry.isIntersecting){
-          const el = entry.target;
-          // Add visible class with a staggered small delay based on index
-          const index = Array.prototype.indexOf.call(lines, el);
-          // Use data-delay to allow CSS transition-delay if needed
-          el.style.transitionDelay = (index * 120) + 'ms';
-          el.classList.add('visible');
-          // Unobserve once it's visible to avoid re-triggering
-          observer.unobserve(el);
-        }
-      });
-    }, { threshold: 0.5 });
+//     const lines = subtext.querySelectorAll('.line');
+//     subtext.innerHTML = '';
 
-    lines.forEach(l => io.observe(l));
-  })();
+//     lines.forEach((line, lineIndex) => {
+//       const words = line.textContent.trim().split(' ');
+//       words.forEach(word => {
+//         const wordSpan = document.createElement('span');
+//         wordSpan.className = 'subtext-word';
+//         wordSpan.textContent = word;
+//         subtext.appendChild(wordSpan);
+//         subtext.appendChild(document.createTextNode(' '));
+//       });
+//       if (lineIndex < lines.length - 1) {
+//         subtext.appendChild(document.createElement('br'));
+//       }
+//     });
 
-  // Word reveal animation for scrolling-text
-  (function(){
-    const scrollingText = document.getElementById('scrolling-text');
-    if (!scrollingText) return;
-
-    const words = scrollingText.textContent.trim().split(' ');
-    scrollingText.innerHTML = ''; // Clear existing content
-
-    words.forEach(word => {
-      const wordSpan = document.createElement('span');
-      wordSpan.className = 'scrolling-word';
-      wordSpan.textContent = word;
-      scrollingText.appendChild(wordSpan);
-      scrollingText.appendChild(document.createTextNode(' ')); // Add space between words
-    });
-
-    const wordSpans = scrollingText.querySelectorAll('.scrolling-word');
+    const wordSpans = subtext.querySelectorAll('.subtext-word');
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -399,8 +354,22 @@
       });
     }, { threshold: 0.5 });
 
-    observer.observe(scrollingText);
+    observer.observe(subtext);
   })();
+</script>
+<script>
+  const lines = document.querySelectorAll('.scrolling-line');
+
+  window.addEventListener('scroll', () => {
+    lines.forEach((line, i) => {
+      const rect = line.getBoundingClientRect();
+      if (rect.top < window.innerHeight - 100) {
+        setTimeout(() => {
+          line.classList.add('visible');
+        }, i * 1000); // 0.5s delay per line
+      }
+    });
+  });
 </script>
 </body>
 </html>
