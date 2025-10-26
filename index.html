@@ -194,19 +194,22 @@
   font-weight: 300;
   font-size: 33px;
   text-align: center;
-  line-height: 1.5;
+  line-height: 1;
   margin-top: 60px;
 }
 
-.subtext-word {
-  transition: color 0.5s ease, opacity 0.5s ease;
+.subtext-line {
+  display: block;
   color: #e4e4e4;
   opacity: 0;
+  transform: translateY(10px);
+  transition: all 1s ease;
 }
 
-.subtext-word.visible {
+.subtext-line.visible {
   color: #333333;
   opacity: 1;
+  transform: translateY(0);
 }
 
     .ribbon-container {
@@ -311,61 +314,30 @@
   </section>
 
   <div class="hello-text">
-    <img src="./assets/Right laurel Vector.png" class="wreath" width="50" height="60">
-    Hello
-    <img src="./assets/Right laurel Vector.png" class="wreath" width="50" height="60" style="transform: scaleX(-1);">
+    <img src="./assets/Right laurel Vector.png" class="wreath" width="30" height="60">
+    Hello!
+    <img src="./assets/Right laurel Vector.png" class="wreath" width="30" height="60" style="transform: scaleX(-1);">
   </div>
 
   <div id="subtext" class="subtext">
   <span class="subtext-line">We recognise that each client’s situation is unique</span><br>
   <span class="subtext-line">and we therefore focus on providing bespoke solutions</span><br>
-  <span class="subtext-line">tailored to our client’s individual needs</span><br>
+  <span class="subtext-line">tailored to our client’s individual needs and objectives.</span><br>
   <span class="subtext-line">and objectives.</span>
 </div>
 <script>
-(function() {
-  const subtext = document.getElementById('subtext');
-  if (!subtext) return;
+  const lines = document.querySelectorAll('.subtext-line');
 
-  // Split each line into word spans
-  const lines = subtext.querySelectorAll('.subtext-line');
-  subtext.innerHTML = ''; // Clear the original text
-
-  lines.forEach((line, lineIndex) => {
-    const words = line.textContent.trim().split(' ');
-    words.forEach((word) => {
-      const wordSpan = document.createElement('span');
-      wordSpan.className = 'subtext-word';
-      wordSpan.textContent = word;
-      subtext.appendChild(wordSpan);
-      subtext.appendChild(document.createTextNode(' '));
-    });
-
-    if (lineIndex < lines.length - 1) {
-      subtext.appendChild(document.createElement('br'));
-    }
-  });
-
-  const wordSpans = subtext.querySelectorAll('.subtext-word');
-
-  // Intersection Observer for reveal
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        let delay = 0;
-        wordSpans.forEach(span => {
-          setTimeout(() => {
-            span.classList.add('visible');
-          }, delay);
-          delay += 1000; // Reveal each word after 1s
-        });
-        observer.unobserve(entry.target);
+  window.addEventListener('scroll', () => {
+    lines.forEach((line, i) => {
+      const rect = line.getBoundingClientRect();
+      if (rect.top < window.innerHeight - 100) {
+        setTimeout(() => {
+          line.classList.add('visible');
+        }, i * 1000); // 1s delay per line
       }
     });
-  }, { threshold: 0.05 });
-
-  observer.observe(subtext);
-})();
+  });
 </script>
 </body>
 </html>
