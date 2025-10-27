@@ -38,7 +38,7 @@
     .logo {
       font-size: 34px;
       font-weight: 500;
-      color: #000;
+      color:  #000;
       letter-spacing: -4px;
     }
 
@@ -149,7 +149,7 @@
     .hero-buttons {
       display: flex;
       gap: 16px;
-      margin-top: 32px;
+      margin-top: 102px;
       justify-content: center;
     }
 
@@ -158,6 +158,7 @@
       flex-direction: column;
       align-items: center;
       gap: 8px;
+      margin-top: 4px;
     }
 
     .stars-container {
@@ -166,13 +167,13 @@
     }
 
     .star {
-      border-radius: 2px;
+      border-radius: 8px;
     }
 
     .trustpilot-text {
-      font-size: 11px;
+      font-size: 13px;
       color: #666;
-      margin-top: 4px;
+      margin-top: -2px;
     }
 
     .wreath {
@@ -185,17 +186,19 @@
     .hello-text {
       font-family: 'Great Vibes', cursive;
       font-size: 28px;
-      margin-top: 300px;
+      margin-top: 200px;
       color: #979797;
+      margin-left: 18px;
+      margin-right: 18px;
     }
 
-    .subtext {
+   .subtext {
   font-family: 'Geist', sans-serif;
   font-weight: 300;
-  font-size: 33px;
+  font-size: 44px;
   text-align: center;
-  line-height: 1;
-  margin-top: 60px;
+  line-height: 0.8;
+  margin-top: 80px;
 }
 
 .subtext-line {
@@ -212,47 +215,119 @@
   transform: translateY(0);
 }
 
-    .ribbon-container {
-      width: 100%;
-      overflow: hidden;
-      padding: 10px 0;
-      box-sizing: border-box;
-      margin-top: 180px;
-    }
+  .ribbon-container {
+  width: 120vw;
+  overflow: hidden;
+  padding: 20px 0;
+  box-sizing: border-box;
+  margin-top: 180px;
+  background-color: #000; /* gives contrast for white text */
+  transform: rotate(-3deg);
+  position: relative;
+}
 
-    .ribbon {
-      white-space: nowrap;
-      display: inline-block;
-      animation: ribbon-scroll 15s linear infinite;
-    }
+.ribbon {
+  display: inline-block;
+  white-space: nowrap;
+  animation: ribbon-scroll 18s linear infinite;
+}
 
-    .ribbon p {
-      display: inline-block;
-      margin: 0;
-      font-size: 20px;
-      color: #333;
-    }
+.ribbon p {
+  display: inline-block;
+  margin: 0;
+  padding: 0 4rem;
+  font-size: 22px;
+  color: #fff;
+  font-family: 'Geist', sans-serif;
+  font-weight: 300;
+  letter-spacing: 1px;
+}
 
-    @keyframes ribbon-scroll {
-      0% {
-        transform: translateX(100%);
-      }
-      100% {
-        transform: translateX(-100%);
-      }
-    }
+/* Infinite scroll animation */
+@keyframes ribbon-scroll {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
 
-    @font-face {
+.ribbon-container-2 {
+  width: 130vw;
+  overflow: hidden;
+  padding: 20px 0;
+  box-sizing: border-box;
+  margin-top: 20px;
+  background-color: #28A601;
+  transform: rotate(4deg);
+  position: relative;
+}
+
+.ribbon-2 {
+  display: inline-block;
+  white-space: nowrap;
+  animation: ribbon-scroll-reverse 20s linear infinite;
+}
+
+.ribbon-2 p {
+  display: inline-flex;
+  align-items: center;
+  flex-wrap: nowrap;
+  gap: 32px;
+  margin: 0;
+  padding: 0 2rem;
+  font-size: 24px;
+  color: #fff;
+  font-family: 'Geist', sans-serif;
+  font-weight: 400;
+  letter-spacing: 1px;
+}
+
+/* Tiny 3-point star */
+.star {
+  width: 0;
+  height: 0;
+  border-left: 7px solid transparent;
+  border-right: 7px solid transparent;
+  border-bottom: 18px solid #fff;
+  position: relative;
+  display: inline-block;
+}
+
+.star::after {
+  content: '';
+  position: absolute;
+  left: -7px;
+  top: 4px;
+  border-left: 7px solid transparent;
+  border-right: 7px solid transparent;
+  border-top: 14px solid #fff;
+  transform: rotate(180deg);
+}
+
+/* Reverse scroll animation */
+@keyframes ribbon-scroll-reverse {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+/* Geist font setup */
+@font-face {
   font-family: 'Geist';
   src: url('/fonts/Geist-Light.woff2') format('woff2');
-  font-weight: 300; /* Light */
+  font-weight: 300;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'Geist';
   src: url('/fonts/Geist-Regular.woff2') format('woff2');
-  font-weight: 400; /* Regular */
+  font-weight: 400;
   font-style: normal;
 }
 
@@ -287,19 +362,19 @@
         <button class="get-started">Get Started</button>
         <div class="trustpilot-stars">
           <div class="stars-container">
-            <svg class="star" width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <svg class="star" width="15" height="15" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M7 0L9.12127 4.87873L14 5.6967L10.5 9.12127L11.3033 14L7 11.5L2.6967 14L3.5 9.12127L0 5.6967L4.87873 4.87873L7 0Z" fill="#00a629"/>
             </svg>
-            <svg class="star" width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <svg class="star" width="15" height="15" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M7 0L9.12127 4.87873L14 5.6967L10.5 9.12127L11.3033 14L7 11.5L2.6967 14L3.5 9.12127L0 5.6967L4.87873 4.87873L7 0Z" fill="#00a629"/>
             </svg>
-            <svg class="star" width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <svg class="star" width="15" height="15" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M7 0L9.12127 4.87873L14 5.6967L10.5 9.12127L11.3033 14L7 11.5L2.6967 14L3.5 9.12127L0 5.6967L4.87873 4.87873L7 0Z" fill="#00a629"/>
             </svg>
-            <svg class="star" width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <svg class="star" width="15" height="15" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M7 0L9.12127 4.87873L14 5.6967L10.5 9.12127L11.3033 14L7 11.5L2.6967 14L3.5 9.12127L0 5.6967L4.87873 4.87873L7 0Z" fill="#d7d7d7"/>
             </svg>
-            <svg class="star" width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <svg class="star" width="15" height="15" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M7 0L9.12127 4.87873L14 5.6967L10.5 9.12127L11.3033 14L7 11.5L2.6967 14L3.5 9.12127L0 5.6967L4.87873 4.87873L7 0Z" fill="#d7d7d7"/>
             </svg>
           </div>
@@ -320,10 +395,10 @@
   </div>
 
   <div id="subtext" class="subtext">
-  <span class="subtext-line">We recognise that each client’s situation is unique</span><br>
-  <span class="subtext-line">and we therefore focus on providing bespoke solutions</span><br>
-  <span class="subtext-line">tailored to our client’s individual needs and objectives.</span><br>
-  <span class="subtext-line">and objectives.</span>
+  <span class="subtext-line">We recognise that each client’s situation is </span><br>
+  <span class="subtext-line">unique and we therefore focus on providing </span><br>
+  <span class="subtext-line"> bespoke solutions tailored to our client’s </span><br>
+  <span class="subtext-line">individual needs and objectives.</span>
 </div>
 <script>
   const lines = document.querySelectorAll('.subtext-line');
@@ -339,5 +414,24 @@
     });
   });
 </script>
+<div class="ribbon-container">
+  <div class="ribbon">
+    <p>Confidence. Precision. Integrity. Commitment. Confidence. Precision. Integrity. Commitment.</p>
+  </div>
+</div>
+
+<div class="ribbon-container-2">
+  <div class="ribbon-2">
+    <p>
+      Commitment <span class="star"></span> 
+      Commitment <span class="star"></span> 
+      Commitment <span class="star"></span> 
+      Commitment <span class="star"></span> 
+      Commitment <span class="star"></span> 
+      Commitment <span class="star"></span> 
+      Commitment
+    </p>
+  </div>
+</div>
 </body>
 </html>
