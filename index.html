@@ -2,44 +2,50 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" position="-3000"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Kalo Navbar + Hero Cards</title>
+
+  <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@700&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@500;300;400&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+
   <style>
+    :root {
+      --green: #00a629;
+      --dark-green: #108700;
+      --gray: #666666;
+      --light-gray: #e8e8e8;
+    }
+
     body {
       margin: 0;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      background-color: #fff;
       font-family: 'Nunito Sans', sans-serif;
+      background: #fff;
+      color: #333;
       overflow-x: hidden;
     }
 
     /* NAVBAR */
     .navbar {
-      width: 900px;
+      width: 90%;
+      max-width: 1000px;
       height: 80px;
+      margin: 24px auto;
       display: flex;
       align-items: center;
       justify-content: space-between;
       padding: 0 20px;
-      box-sizing: border-box;
-      color: #bebebe;
-      border: #e8e8e8 0.3px solid;
+      border: 1px solid var(--light-gray);
       border-radius: 48px;
-      margin-top: 24px;
-      position: relative;
-      z-index: 10;
+      background: #fff;
     }
 
     .logo {
-      font-size: 34px;
-      font-weight: 500;
-      color:  #000;
-      letter-spacing: -4px;
+      font-size: 32px;
+      font-weight: 600;
+      letter-spacing: -2px;
+      color: #000;
     }
 
     .right-section {
@@ -49,19 +55,18 @@
     }
 
     .get-started {
-      width: 145px;
-      height: 45px;
-      background-color: #00a629;
+      padding: 12px 24px;
+      background-color: var(--green);
       color: #fff;
-      border: rgb(16, 135, 0) 0.5px solid;
+      border: 1px solid var(--dark-green);
       border-radius: 32px;
       font-size: 16px;
       cursor: pointer;
-      transition: 0.2s ease;
+      transition: background 0.3s ease;
     }
 
     .get-started:hover {
-      background-color: #333;
+      background: #333;
     }
 
     .icon-circle {
@@ -74,11 +79,6 @@
       align-items: center;
       justify-content: center;
       cursor: pointer;
-      transition: background-color 0.2s ease;
-    }
-
-    .icon-circle:hover {
-      background-color: #ddd;
     }
 
     .plus-icon {
@@ -89,268 +89,241 @@
 
     /* HERO SECTION */
     .hero {
-      width: 100%;
-      height: 600px;
-      margin-top: 2px;
-      position: relative;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-}
-
-    .hero img {
-      position: absolute;
-      width: auto;
-      height: auto;
-      max-width: 350px;
-      transition: transform 0.2s ease;
-      transform: scale(1.25);
-    }
-
-    .hero img:hover {
-      transform: scale(1.5);
-    }
-
-    /* Card positions */
-    .card1 { left: 24px; top: 248px; }
-    .card2 { left: 1320px; top: 339px; }
-    .card3 { left: 1360px; top: 270px; }
-    .card4 { left: 32px; top: 380px; }
-
-    /* HERO TEXT */
-    .hero-text {
-      position: relative;
-      z-index: 5;
       text-align: center;
-      color: #666666;
+      margin: 60px auto;
+      padding: 0 20px;
+      max-width: 1000px;
+      position: relative;
+    }
+
+    .hero-text {
       font-family: 'Geist', sans-serif;
-      font-weight: 400;
-      font-size: 88px;
-      letter-spacing: -4px;
+      font-weight: 500;
+      font-size: clamp(36px, 6vw, 88px);
+      letter-spacing: -2px;
       line-height: 1.1;
-      white-space: pre-line;
-      margin-top: 62px;
+      color: var(--gray);
+      margin-bottom: 16px;
     }
 
     .hero-subtext {
-      position: relative;
-      z-index: 5;
-      text-align: center;
       color: #979797;
       font-family: 'Geist', sans-serif;
-      font-weight: 10;
-      font-size: 18px;
-      letter-spacing: 0px;
-      line-height: 1.4;
-      margin-top: 12px;
-      white-space: pre-line;
+      font-size: clamp(16px, 2vw, 20px);
+      line-height: 1.5;
+      margin-bottom: 48px;
     }
 
     .hero-buttons {
       display: flex;
-      gap: 16px;
-      margin-top: 102px;
+      flex-wrap: wrap;
       justify-content: center;
+      gap: 16px;
+      margin-bottom: 60px;
     }
 
     .trustpilot-stars {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 8px;
-  margin-top: 4px;
-}
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+    }
+
     .stars-container {
       display: flex;
       gap: 4px;
     }
 
-    .star {
-      border-radius: 8px;
-    }
-
     .trustpilot-text {
       font-size: 13px;
       color: #666;
-      margin-top: -2px;
     }
 
-    .wreath {
-      position: relative;
-      top: 16px;
-      margin-left: 16px;
-      margin-right: 16px;
+    /* HERO IMAGES */
+    .hero-images {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 36px;
+      margin-top: 40px;
     }
 
+    .hero-images img {
+      width: 160px;
+      max-width: 40%;
+      transition: transform 0.3s ease;
+      border-radius: 12px;
+    }
+
+    .hero-images img:hover {
+      transform: scale(1.5);
+    }
+
+    /* SUBTEXT ANIMATION */
     .hello-text {
       font-family: 'Great Vibes', cursive;
       font-size: 28px;
-      margin-top: 200px;
       color: #979797;
-      margin-left: 18px;
-      margin-right: 18px;
+      text-align: center;
+      margin-top: 160px;
     }
 
-   .subtext {
-  font-family: 'Geist', sans-serif;
-  font-weight: 300;
-  font-size: 44px;
-  text-align: center;
-  line-height: 0.8;
-  margin-top: 80px;
-}
+    .subtext {
+      font-family: 'Geist', sans-serif;
+      font-weight: 300;
+      font-size: clamp(20px, 3vw, 36px);
+      text-align: center;
+      line-height: 0.8;
+      margin: 60px auto;
+      max-width: 700px;
+    }
 
-.subtext-line {
-  display: block;
-  color: #e4e4e4;
-  opacity: 0;
-  transform: translateY(10px);
-  transition: all 1s ease;
-}
+    .subtext-line {
+      display: block;
+      color: #e4e4e4;
+      opacity: 0;
+      transform: translateY(10px);
+      transition: all 1s ease;
+    }
 
-.subtext-line.visible {
-  color: #333333;
-  opacity: 1;
-  transform: translateY(0);
-}
+    .subtext-line.visible {
+      color: #333;
+      opacity: 1;
+      transform: translateY(0);
+    }
 
-  .ribbon-container {
-  width: 108vw;
-  overflow: hidden;
-  padding: 20px 0;
-  box-sizing: border-box;
-  margin-top: 180px;
-  background-color: #000; /* gives contrast for white text */
-  transform: rotate(-3deg);
-  position: relative;
-}
+    /* RIBBON SECTIONS */
+    .ribbon-container, .ribbon-container-2 {
+      width: 100vw;
+      overflow: hidden;
+      padding: 20px 0;
+      box-sizing: border-box;
+      position: relative;
+      margin-top: 120px;
+    }
 
-.ribbon {
-  display: inline-block;
-  white-space: nowrap;
-  animation: ribbon-scroll 18s linear infinite;
-}
+    .ribbon-container {
+      background-color: #000;
+      transform: rotate(-3deg);
+    }
 
-.ribbon p {
-  display: inline-block;
-  margin: 0;
-  padding: 0 4rem;
-  font-size: 22px;
-  color: #fff;
-  font-family: 'Geist', sans-serif;
-  font-weight: 300;
-  letter-spacing: 1px;
-}
+    .ribbon-container-2 {
+      background-color: #28A601;
+      transform: rotate(4deg);
+      margin-top: 20px;
+    }
 
-/* Infinite scroll animation */
-@keyframes ribbon-scroll {
-  0% {
-    transform: translateX(100%);
-  }
-  100% {
-    transform: translateX(-100%);
-  }
-}
+    .ribbon, .ribbon-2 {
+      display: inline-block;
+      white-space: nowrap;
+      animation: ribbon-scroll 18s linear infinite;
+    }
 
-.ribbon-container-2 {
-  width: 108vw;
-  overflow: hidden;
-  padding: 20px 0;
-  box-sizing: border-box;
-  margin-top: 20px;
-  background-color: #28A601;
-  transform: rotate(4deg);
-  position: relative;
-}
+    .ribbon-2 {
+      animation: ribbon-scroll-reverse 20s linear infinite;
+    }
 
-.ribbon-2 {
-  display: inline-block;
-  white-space: nowrap;
-  animation: ribbon-scroll-reverse 20s linear infinite;
-}
+    .ribbon p, .ribbon-2 p {
+      display: inline-block;
+      margin: 0;
+      padding: 0 4rem;
+      font-size: 22px;
+      color: #fff;
+      font-family: 'Geist', sans-serif;
+      font-weight: 300;
+      letter-spacing: 1px;
+    }
 
-.ribbon-2 p {
-  display: inline-flex;
-  align-items: center;
-  flex-wrap: nowrap;
-  gap: 32px;
-  margin: 0;
-  padding: 0 2rem;
-  font-size: 24px;
-  color: #fff;
-  font-family: 'Geist', sans-serif;
-  font-weight: 400;
-  letter-spacing: 1px;
-}
+    @keyframes ribbon-scroll {
+      0% { transform: translateX(100%); }
+      100% { transform: translateX(-100%); }
+    }
 
-/* Tiny 3-point star */
-.star {
-  width: 0;
-  height: 0;
-  border-left: 7px solid transparent;
-  border-right: 7px solid transparent;
-  border-bottom: 18px solid #fff;
-  position: relative;
-  display: inline-block;
-}
+    @keyframes ribbon-scroll-reverse {
+      0% { transform: translateX(-100%); }
+      100% { transform: translateX(100%); }
+    }
 
-.star::after {
-  content: '';
-  position: absolute;
-  left: -7px;
-  top: 4px;
-  border-left: 7px solid transparent;
-  border-right: 7px solid transparent;
-  border-top: 14px solid #fff;
-  transform: rotate(180deg);
-}
-
-/* Reverse scroll animation */
-@keyframes ribbon-scroll-reverse {
-  0% {
-    transform: translateX(-100%);
-  }
-  100% {
-    transform: translateX(100%);
-  }
-}
-
+   /* HERO FRAME */
 .hero-frame {
-  height: 1000px;
-  width: 100%;
   background-color: #efefef;
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  padding-top: 4px;
-  box-sizing: border-box;
+  border-top-left-radius: 24px;
+  border-top-right-radius: 24px;
+  text-align: center;
+  padding: 0px; 
   margin-top: 100px;
-  border-top-left-radius: 48px;
-  border-top-right-radius: 48px;
-  border-bottom-left-radius: 0;
-  border-bottom-right-radius: 0;
 }
 
-/* Geist font setup */
-@font-face {
-  font-family: 'Geist';
-  src: url('/fonts/Geist-Light.woff2') format('woff2');
+/* HERO SUBTEXT */
+.hero-frame .hero-subtext {
+  font-family: 'Geist', sans-serif;
   font-weight: 300;
-  font-style: normal;
+  color: #4a4a4a;
+  text-align: center;
+  font-size: clamp(20px, 3vw, 36px);
+  line-height: 1.2;
+  margin: 4px auto 0; /* reduced from 60px auto to 24px auto 0 */
 }
 
-@font-face {
-  font-family: 'Geist';
-  src: url('/fonts/Geist-Regular.woff2') format('woff2');
-  font-weight: 400;
-  font-style: normal;
+.hero-card1 {
+  width: 380px;
+  height: 520px;
+  background-color: #ffffff;
+  border: 0.5px solid #cac9c9;
+  border-radius: 36px;
+  margin: 100px auto 0; /* centers the card and adds 100px space below subtext */
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding-left: 24px;
+  padding-top: 24px;
+  box-sizing: border-box;
+  text-align: left; /* aligns text to the left inside */
 }
 
+.card-title {
+  font-family: 'Geist', sans-serif;
+  font-weight: 30;
+  font-size: 36px;
+  letter-spacing: -0.5px;
+  color: #000000;
+  margin: 0;
+
+}
+
+.card-description {
+  font-family: 'Geist', sans-serif;
+  font-weight: 300;
+  font-size: 18px;
+  color: #979797;
+  letter-spacing: -0.5px;
+  margin-top: 12px;
+  line-height: 1.5;
+  max-width: 90%;
+}
+
+
+    /* MEDIA QUERIES */
+    @media (max-width: 768px) {
+      .navbar {
+        flex-direction: column;
+        height: auto;
+        gap: 10px;
+      }
+
+      .hero-images img {
+        max-width: 80%;
+      }
+
+      .ribbon p, .ribbon-2 p {
+        font-size: 16px;
+        padding: 0 2rem;
+      }
+    }
   </style>
 </head>
+
 <body>
-  <!-- NAVBAR -->
   <nav class="navbar">
     <div class="logo">Kalo</div>
     <div class="right-section">
@@ -363,91 +336,84 @@
     </div>
   </nav>
 
-  <!-- HERO SECTION -->
   <section class="hero">
-    <div class="hero-text-container">
-    <div class="hero-text-container" style="margin-top: 36px;">
-      <h1 class="hero-text">
-        Your Future,
-        Confidently Secured.
-      </h1>
-      <p class="hero-subtext">
-        Independent financial advice tailored to your life from retirement planning <br> to mortgages, investments and family protection
-      </p>
-      <div class="hero-buttons">
-        <button class="get-started">Get Started</button>
-        <div class="trustpilot-stars">
-          <div class="stars-container">
-            <svg class="star" width="15" height="15" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M7 0L9.12127 4.87873L14 5.6967L10.5 9.12127L11.3033 14L7 11.5L2.6967 14L3.5 9.12127L0 5.6967L4.87873 4.87873L7 0Z" fill="#00a629"/>
-            </svg>
-            <svg class="star" width="15" height="15" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M7 0L9.12127 4.87873L14 5.6967L10.5 9.12127L11.3033 14L7 11.5L2.6967 14L3.5 9.12127L0 5.6967L4.87873 4.87873L7 0Z" fill="#00a629"/>
-            </svg>
-            <svg class="star" width="15" height="15" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M7 0L9.12127 4.87873L14 5.6967L10.5 9.12127L11.3033 14L7 11.5L2.6967 14L3.5 9.12127L0 5.6967L4.87873 4.87873L7 0Z" fill="#00a629"/>
-            </svg>
-            <svg class="star" width="15" height="15" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M7 0L9.12127 4.87873L14 5.6967L10.5 9.12127L11.3033 14L7 11.5L2.6967 14L3.5 9.12127L0 5.6967L4.87873 4.87873L7 0Z" fill="#d7d7d7"/>
-            </svg>
-            <svg class="star" width="15" height="15" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M7 0L9.12127 4.87873L14 5.6967L10.5 9.12127L11.3033 14L7 11.5L2.6967 14L3.5 9.12127L0 5.6967L4.87873 4.87873L7 0Z" fill="#d7d7d7"/>
-            </svg>
-          </div>
-          <span class="trustpilot-text">on Trustpilot</span>
+    <h1 class="hero-text">Your Future,<br>Confidently Secured.</h1>
+    <p class="hero-subtext">
+      Independent financial advice tailored to your life — from retirement planning<br> to mortgages, investments and family protection.
+    </p>
+
+    <div class="hero-buttons">
+      <button class="get-started">Get Started</button>
+      <div class="trustpilot-stars">
+        <div class="stars-container">
+          <svg class="star" width="15" height="15" viewBox="0 0 14 14" xmlns="http://www.w3.org/2000/svg">
+            <path d="M7 0L9.1 4.9L14 5.7L10.5 9.1L11.3 14L7 11.5L2.7 14L3.5 9.1L0 5.7L4.9 4.9L7 0Z" fill="#00a629"/>
+          </svg>
+          <svg class="star" width="15" height="15" viewBox="0 0 14 14" xmlns="http://www.w3.org/2000/svg">
+            <path d="M7 0L9.1 4.9L14 5.7L10.5 9.1L11.3 14L7 11.5L2.7 14L3.5 9.1L0 5.7L4.9 4.9L7 0Z" fill="#00a629"/>
+          </svg>
+          <svg class="star" width="15" height="15" viewBox="0 0 14 14" xmlns="http://www.w3.org/2000/svg">
+            <path d="M7 0L9.1 4.9L14 5.7L10.5 9.1L11.3 14L7 11.5L2.7 14L3.5 9.1L0 5.7L4.9 4.9L7 0Z" fill="#00a629"/>
+          </svg>
         </div>
+        <span class="trustpilot-text">on Trustpilot</span>
       </div>
     </div>
-    <img src="assets/Kalo HS Card 1.png" alt="Card 1" class="card1">
-    <img src="assets/Kalo HS Card 2.png" alt="Card 2" class="card2">
-    <img src="assets/Kalo HS Card 3.png" alt="Card 3" class="card3">
-    <img src="assets/Kalo HS Card 4.png" alt="Card 4" class="card4">
+
+    <div class="hero-images">
+      <img src="assets/Kalo HS Card 1.png" alt="Card 1">
+      <img src="assets/Kalo HS Card 2.png" alt="Card 2">
+      <img src="assets/Kalo HS Card 3.png" alt="Card 3">
+      <img src="assets/Kalo HS Card 4.png" alt="Card 4">
+    </div>
   </section>
 
-  <div class="hello-text">
-    <img src="./assets/Right laurel Vector.png" class="wreath" width="30" height="60">
-    Hello!
-    <img src="./assets/Right laurel Vector.png" class="wreath" width="30" height="60" style="transform: scaleX(-1);">
-  </div>
+  <div class="hello-text">Hello!</div>
 
   <div id="subtext" class="subtext">
-  <span class="subtext-line">We recognise that each client’s situation is </span><br>
-  <span class="subtext-line">unique and we therefore focus on providing </span><br>
-  <span class="subtext-line"> bespoke solutions tailored to our client’s </span><br>
+  <span class="subtext-line">We recognise that each client’s situation is</span><br>
+  <span class="subtext-line">unique and we therefore focus on providing</span><br>
+  <span class="subtext-line">bespoke solutions tailored to our client’s</span><br>
   <span class="subtext-line">individual needs and objectives.</span>
 </div>
-<script>
-  const lines = document.querySelectorAll('.subtext-line');
 
-  window.addEventListener('scroll', () => {
-    lines.forEach((line, i) => {
-      const rect = line.getBoundingClientRect();
-      if (rect.top < window.innerHeight - 100) {
-        setTimeout(() => {
-          line.classList.add('visible');
-        }, i * 1000); // 1s delay per line
-      }
-    });
-  });
-</script>
-<div class="ribbon-container">
-  <div class="ribbon">
-    <p>Confidence. Precision. Integrity. Commitment. Confidence. Precision. Integrity. Commitment.</p>
-  </div>
-</div>
-
-<div class="ribbon-container-2">
-  <div class="ribbon-2">
-    <p>Confidence. Precision. Integrity. Commitment. Confidence. Precision. Integrity. Commitment.</p>
-  </div>
-</div>
-
-<section class="hero-frame">
-    <div class="hello-text">
-      <img src="./assets/Right laurel Vector.png" class="wreath left" width="30" height="60">
-      <span>Hello!</span>
-      <img src="./assets/Left laurel Vector.png" class="wreath right" width="30" height="60">
+  <div class="ribbon-container">
+    <div class="ribbon">
+      <p>Confidence. Precision. Integrity. Commitment. Confidence. Precision. Integrity. Commitment.</p>
     </div>
-</section>
+  </div>
+
+  <div class="ribbon-container-2">
+    <div class="ribbon-2">
+      <p>Confidence. Precision. Integrity. Commitment. Confidence. Precision. Integrity. Commitment.</p>
+    </div>
+  </div>
+
+  <section class="hero-frame">
+    <h2 class="hello-text">And Why?</h2>
+    <p class="hero-subtext">Why we build relationships <br>with our clients today</p>
+
+     <div class="hero-card1">
+  <div class="card-content">
+    <h2 class="card-title">Insurance</h2>
+    <p class="card-description">
+      Independent financial advice tailored to your life from retirement planning 
+      to mortgages, investments, and family protection.
+    </p>
+  </div>
+</div>
+  </section>
+
+  <script>
+    const lines = document.querySelectorAll('.subtext-line');
+    window.addEventListener('scroll', () => {
+      lines.forEach((line, i) => {
+        const rect = line.getBoundingClientRect();
+        if (rect.top < window.innerHeight - 100) {
+          setTimeout(() => line.classList.add('visible'), i * 600);
+        }
+      });
+    });
+  </script>
 </body>
 </html>
