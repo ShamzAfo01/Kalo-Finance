@@ -252,6 +252,7 @@
   text-align: center;
   padding: 4px; 
   margin-top: 100px;
+  padding: 80px 0 60px; /* top | sides | bottom */
 }
 
 /* HERO SUBTEXT */
@@ -355,7 +356,6 @@
   display: flex;
 }
 
-
     /* MEDIA QUERIES */
     @media (max-width: 768px) {
       .navbar {
@@ -373,6 +373,101 @@
         padding: 0 2rem;
       }
     }
+ /* Section container */
+.feedback-section {
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0.7), #ffffff);
+  backdrop-filter: blur(12px);
+  padding: 60px 0 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  position: relative;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  transform: translateX(-40px); /* subtle nudge left, not off-centered */
+  border-top: 1px solid rgba(0, 0, 0, 0.05); /* adds gentle section separation */
+}
+
+/* Soft overlay to blend the transition from the efefef frame */
+.feedback-section::before {
+  content: "";
+  position: absolute;
+  top: -40px;
+  left: 0;
+  right: 0;
+  height: 80px;
+  background: linear-gradient(to bottom, #efefef, rgba(255, 255, 255, 0));
+  z-index: 0;
+}
+
+/* Text container */
+.feedback-text {
+  position: relative;
+  z-index: 1;
+  margin-left: 80px; /* pulls the content slightly toward center */
+}
+
+/* Text styles */
+.feedback-title {
+  font-family: 'Great Vibes', cursive;
+  font-weight: 350;
+  font-size: 28px;
+  color: #979797;
+  letter-spacing: 0.5px;
+  margin: 0;
+}
+
+.feedback-subtitle {
+  font-family: 'Geist', sans-serif;
+  font-weight: 300;
+  font-size: 44px;
+  color: #4a4a4a;
+  letter-spacing: -1px;
+  margin-top: 24px;
+}
+
+.feedback-body {
+  font-family: 'Geist', sans-serif;
+  font-weight: 300;
+  font-size: 18px;
+  color: #7a7a7a;
+  letter-spacing: -0.5px;
+  margin-top: -16px;
+  max-width: 480px;
+  line-height: 1.5;
+}
+
+/* Indicators row */
+.feedback-indicators {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin-top: 66px;
+  margin-left: 80px; /* aligns with the text */
+}
+
+/* Cylinder (active state) */
+.indicator-cylinder {
+  width: 43px;
+  height: 12px;
+  background-color: #c3c3c3;
+  border-radius: 100px;
+}
+
+/* Circles (inactive states) */
+.indicator-circle {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: #e7e7e7;
+}
+
+/* Lighter circle on the right */
+.indicator-circle.light {
+  background-color: #e7e7e7;
+}
   </style>
 </head>
 
@@ -510,5 +605,23 @@
       });
     });
   </script>
+
+  <section class="feedback-section">
+  <div class="feedback-text">
+    <h1 class="feedback-title">Our Feedbacks</h1>
+    <h2 class="feedback-subtitle">What our clients have to say</h2>
+    <p class="feedback-body">
+      Independent financial advice tailored to your life protection.
+    </p>
+  </div>
+
+  <div class="feedback-indicators">
+    <div class="indicator-circle small"></div>
+    <div class="indicator-circle small"></div>
+    <div class="indicator-cylinder"></div>
+    <div class="indicator-circle small light"></div>
+  </div>
+</section>
+
 </body>
 </html>
