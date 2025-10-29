@@ -388,6 +388,7 @@
   margin: 0 auto;
   transform: translateX(-40px); /* subtle nudge left, not off-centered */
   border-top: 1px solid rgba(0, 0, 0, 0.05); /* adds gentle section separation */
+  gap: 120px; /* controls space between SVG & text */
 }
 
 /* Soft overlay to blend the transition from the efefef frame */
@@ -469,6 +470,14 @@
   background-color: #e7e7e7;
 }
 
+.feedback-graphic {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end; /* push toward center */
+  align-items: center;
+  position: relative;
+  z-index: 1;
+}
 
   </style>
 </head>
@@ -623,7 +632,10 @@
     <div class="indicator-cylinder"></div>
     <div class="indicator-circle small light"></div>
   </div>
+  <!-- SVG container -->
+  <div class="feedback-graphic">
+    <img src="./assets/Frame kalo feedback profiles.svg" alt="feedback visuals" />
+  </div>
 </section>
-
 </body>
 </html>
