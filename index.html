@@ -525,7 +525,14 @@
   border-radius: 50%;
   background: radial-gradient(circle at 30% 30%, #d4d4d4 0%, #a9a9a9 60%);
   flex-shrink: 0;
-  box-shadow: 0 10px 24px rgba(0,0,0,0.12);
+  overflow: hidden; /* ensure image is clipped to circle */
+}
+
+.fg-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
 }
 
 /* right side of avatar: quotes + pill */
@@ -536,7 +543,7 @@
   position: relative;
 }
 
-/* new: container to stack avatar and pill vertically */
+/* restore: container to stack avatar and pill vertically */
 .fg-avatar-and-pill {
   display: flex;
   flex-direction: column;
@@ -544,14 +551,14 @@
   gap: 12px; /* space between avatar and pill */
 }
 
-/* pill with name, 180w x 36h, removed top margin (stacking handled by container) */
+/* pill with name, 180w x 36h, stacking handled by container */
 .fg-pill {
   width: 180px;
   height: 36px;
-  margin-top: 0; /* removed; container handles spacing */
+  margin-top: 0; /* container handles spacing */
   background-color: #ffffff;
   border: 0.5px solid #e4e4e4;
-  border-radius: 999px 999px 6px 999px; /* bottom-right set to 6px */
+  border-radius: 24px 24px 10px 24px; /* bottom-right set to 6px */
   box-sizing: border-box;
 
   display: flex;
@@ -559,43 +566,13 @@
   padding: 0 16px;
 }
 
-/* quote icons stack (diagonal placement) */
-.fg-quotes {
-  position: relative;
-  width: 38px;   /* width of quote icons */
-  height: 28px + 12px; /* we'll offset one down; we can let it overflow */
-  pointer-events: none;
-}
-
-/* shared quote style */
-.fg-quote {
-  width: 38px;
-  height: 28px;
-  position: absolute;
-}
-
-.fg-quote-top {
-  top: 0;
-  left: 0;
-}
-
-.fg-quote-bottom {
-  top: 14px;   /* diagonal down */
-  left: 14px;  /* diagonal right */
-}
-
-/* svg quote fill / stroke */
-.fg-quote-svg path {
-  fill: #e4e4e4;
-  stroke: #d8d8d8;
-  stroke-width: 0.3px;
-}
-
 /* ========== MESSAGE BOX ========== */
 .fg-box {
+  position: relative; /* needed for absolute chevron */
+  overflow: visible;
   width: 320px;
   height: 130px;
-  margin-top: 16px; /* space under top cluster */
+  margin-top: 8px; /* space under top cluster */
   background-color: #ededed;
   border: 0.5px solid #d8d8d8;
   border-radius: 12px;
@@ -606,19 +583,26 @@
   align-items: flex-start;
   justify-content: flex-end; /* align text block to the right side inside */
   text-align: left;
+  line-height: 150%;
+  margin-top: 8px;
+}
+/* floating chevron that appears on hover */
+.fg-chevron {
+  position: absolute;
+  width: 44px;
+  height: 44px;
+  top: -42px; /* half height to sit above box */
+  right: 0px; /* match fg-box padding */
+  opacity: 0;
+  transform: translateY(-8px) scale(0.98);
+  transition: opacity 220ms ease-in, transform 220ms ease-in;
+  pointer-events: none;
 }
 
-.fg-box-text {
-  font-family: 'Geist', sans-serif;
-  font-size: 18px;
-  font-weight: 400;
-  line-height: 1.4;
-  color: #6e6e6e;
-  margin: 0;
-  max-width: 100%;
+.fg-box:hover .fg-chevron {
+  opacity: 1;
+  transform: translateY(0) scale(1);
 }
-
-
 
   </style>
 </head>
@@ -781,7 +765,9 @@
     <!-- top row: circle + quotes + name pill -->
     <div class="fg-top">
       <div class="fg-avatar-and-pill">
-        <div class="fg-avatar"></div>
+        <div class="fg-avatar">
+          <img src="https://i.pravatar.cc/300?img=12" alt="Robert Thames portrait" />
+        </div>
         <div class="fg-pill">
           <span class="fg-pill-text">Robert Thames</span>
         </div>
@@ -789,23 +775,17 @@
 
       <div class="fg-top-right">
         <div class="fg-quotes">
-          <div class="fg-quote fg-quote-top">
-            <svg width="38" height="28" viewBox="0 0 38 28" xmlns="http://www.w3.org/2000/svg" class="fg-quote-svg">
-              <path d="M14 4C10 4 7 7 7 11C7 13.7 8.5 15.7 10.5 16.8C11.2 17.2 11.5 17.9 11.5 18.6C11.5 19.6 10.7 20.5 9.5 20.5C8 20.5 6.5 19.4 5.6 17.8C4.6 16 4 13.9 4 11.5C4 6.5 8 2 14 2V4ZM30 4C26 4 23 7 23 11C23 13.7 24.5 15.7 26.5 16.8C27.2 17.2 27.5 17.9 27.5 18.6C27.5 19.6 26.7 20.5 25.5 20.5C24 20.5 22.5 19.4 21.6 17.8C20.6 16 20 13.9 20 11.5C20 6.5 24 2 30 2V4Z"/>
-            </svg>
-          </div>
-
-          <div class="fg-quote fg-quote-bottom">
-            <svg width="38" height="28" viewBox="0 0 38 28" xmlns="http://www.w3.org/2000/svg" class="fg-quote-svg">
-              <path d="M14 4C10 4 7 7 7 11C7 13.7 8.5 15.7 10.5 16.8C11.2 17.2 11.5 17.9 11.5 18.6C11.5 19.6 10.7 20.5 9.5 20.5C8 20.5 6.5 19.4 5.6 17.8C4.6 16 4 13.9 4 11.5C4 6.5 8 2 14 2V4ZM30 4C26 4 23 7 23 11C23 13.7 24.5 15.7 26.5 16.8C27.2 17.2 27.5 17.9 27.5 18.6C27.5 19.6 26.7 20.5 25.5 20.5C24 20.5 22.5 19.4 21.6 17.8C20.6 16 20 13.9 20 11.5C20 6.5 24 2 30 2V4Z"/>
-            </svg>
-          </div>
+          <img src="assets/Quote icons kalo feedback.svg" alt="quote icons" />
         </div>
       </div>
     </div>
 
     <!-- message box -->
     <div class="fg-box">
+      <!-- chevron (hidden by default, shows on hover) -->
+      <svg class="fg-chevron" viewBox="0 0 44 44" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path d="M0 44 L22 0 L44 44 Z" fill="#d8d8d8" />
+      </svg>
       <p class="fg-box-text">
         Independent financial advice tailored to your life from retirement planning to
         mortgages, investments and family protection.
