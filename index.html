@@ -416,14 +416,14 @@
 .feedback-graphic {
   width: 100%;
   display: flex;
-  justify-content: flex-end; /* pushes SVG toward the center line */
+  justify-content: flex-start; /* changed: graphic now on right column, align toward center */
   align-items: center;
   position: relative;
   z-index: 1;
 }
 .feedback-graphic img {
   max-width: 520px;
-  width: 100%;
+  width: 65%;
   height: auto;
   object-fit: contain;
 }
@@ -658,12 +658,7 @@
   </script>
 
  <section class="feedback-section">
-  <!-- Left: SVG -->
-  <div class="feedback-graphic">
-    <img src="assets/Frame kalo feedback profiles.svg" alt="Feedback visual" />
-  </div>
-
-  <!-- Right: Text -->
+  <!-- Left: Text (swapped) -->
   <div class="feedback-text">
     <h3 class="feedback-title">Kind words</h3>
     <h2 class="feedback-subtitle">What people are saying</h2>
@@ -676,6 +671,11 @@
       <div class="indicator-circle"></div>
       <div class="indicator-circle light"></div>
     </div>
+  </div>
+
+  <!-- Right: SVG (swapped) -->
+  <div class="feedback-graphic">
+    <img src="assets/Frame kalo feedback profiles.svg" alt="Feedback visual" />
   </div>
 </section>
 
