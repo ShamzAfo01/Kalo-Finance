@@ -493,30 +493,132 @@
   background-color: #e7e7e7;
 }
 
-/* ===== Responsive ===== */
-@media (max-width: 1024px) {
-  .feedback-section {
-    column-gap: 80px;
-    padding: 50px 20px 120px;
-  }
-  .feedback-graphic img,
-  .feedback-text { max-width: 480px; }
+/* wrapper to drop into .feedback-graphic */
+.feedback-graphic-html {
+  position: relative;
+  width: 320px;   /* large enough to contain the box width */
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  font-family: 'Geist', sans-serif;
+  color: #6e6e6e;
 }
 
-@media (max-width: 840px) {
-  .feedback-section {
-    grid-template-columns: 1fr;     /* stack */
-    row-gap: 40px;
-    justify-items: center;
-  }
-  .feedback-graphic {
-    justify-content: center;        /* center SVG when stacked */
-  }
-  .feedback-text {
-    align-items: center;            /* center text when stacked */
-    text-align: center;
-  }
+/* container of avatar/quotes/pill + box */
+.fg-block {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 }
+
+/* ========== TOP ROW ========== */
+.fg-top {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+}
+
+/* avatar circle */
+.fg-avatar {
+  width: 65px;
+  height: 65px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 30%, #d4d4d4 0%, #a9a9a9 60%);
+  flex-shrink: 0;
+  box-shadow: 0 10px 24px rgba(0,0,0,0.12);
+}
+
+/* right side of avatar: quotes + pill */
+.fg-top-right {
+  display: flex;
+  flex-direction: column;
+  margin-left: 8px; /* exactly 8px horizontal spacing from the circle */
+  position: relative;
+}
+
+/* quote icons stack (diagonal placement) */
+.fg-quotes {
+  position: relative;
+  width: 38px;   /* width of quote icons */
+  height: 28px + 12px; /* we'll offset one down; we can let it overflow */
+  pointer-events: none;
+}
+
+/* shared quote style */
+.fg-quote {
+  width: 38px;
+  height: 28px;
+  position: absolute;
+}
+
+.fg-quote-top {
+  top: 0;
+  left: 0;
+}
+
+.fg-quote-bottom {
+  top: 14px;   /* diagonal down */
+  left: 14px;  /* diagonal right */
+}
+
+/* svg quote fill / stroke */
+.fg-quote-svg path {
+  fill: #e4e4e4;
+  stroke: #d8d8d8;
+  stroke-width: 0.3px;
+}
+
+/* pill with name, 180w x 36h, 12px below circle */
+.fg-pill {
+  width: 180px;
+  height: 36px;
+  margin-top: 12px; /* vertical spacing from top content (avatar row height basis) */
+  background-color: #ffffff;
+  border: 0.5px solid #e4e4e4;
+  border-radius: 999px;
+  box-sizing: border-box;
+
+  display: flex;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.fg-pill-text {
+  font-size: 14px;
+  font-weight: 400;
+  color: #6e6e6e;
+  line-height: 1;
+  white-space: nowrap;
+  text-transform: none;
+}
+
+/* ========== MESSAGE BOX ========== */
+.fg-box {
+  width: 320px;
+  height: 130px;
+  margin-top: 16px; /* space under top cluster */
+  background-color: #ededed;
+  border: 0.5px solid #d8d8d8;
+  border-radius: 12px;
+  box-sizing: border-box;
+  padding: 16px;
+
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-end; /* align text block to the right side inside */
+  text-align: left;
+}
+
+.fg-box-text {
+  font-family: 'Geist', sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.4;
+  color: #6e6e6e;
+  margin: 0;
+  max-width: 100%;
+}
+
 
 
   </style>
@@ -660,7 +762,7 @@
  <section class="feedback-section">
   <!-- Left: Text (swapped) -->
   <div class="feedback-text">
-    <h3 class="feedback-title">Kind words</h3>
+    <h3 class="feedback-title">Our Feedbacks</h3>
     <h2 class="feedback-subtitle">What people are saying</h2>
     <p class="feedback-body">
       Discover how our platform has helped creators, teams, and dreamers achieve more together.
@@ -670,13 +772,47 @@
       <div class="indicator-cylinder"></div>
       <div class="indicator-circle"></div>
       <div class="indicator-circle light"></div>
+      <div class="indicator-circle light"></div>
     </div>
   </div>
 
   <!-- Right: SVG (swapped) -->
-  <div class="feedback-graphic">
-    <img src="assets/Frame kalo feedback profiles.svg" alt="Feedback visual" />
+  <div class="feedback-graphic-html">
+  <div class="fg-block">
+    <!-- top row: circle + quotes + name pill -->
+    <div class="fg-top">
+      <div class="fg-avatar"></div>
+
+      <div class="fg-top-right">
+        <div class="fg-quotes">
+          <div class="fg-quote fg-quote-top">
+            <svg width="38" height="28" viewBox="0 0 38 28" xmlns="http://www.w3.org/2000/svg" class="fg-quote-svg">
+              <path d="M14 4C10 4 7 7 7 11C7 13.7 8.5 15.7 10.5 16.8C11.2 17.2 11.5 17.9 11.5 18.6C11.5 19.6 10.7 20.5 9.5 20.5C8 20.5 6.5 19.4 5.6 17.8C4.6 16 4 13.9 4 11.5C4 6.5 8 2 14 2V4ZM30 4C26 4 23 7 23 11C23 13.7 24.5 15.7 26.5 16.8C27.2 17.2 27.5 17.9 27.5 18.6C27.5 19.6 26.7 20.5 25.5 20.5C24 20.5 22.5 19.4 21.6 17.8C20.6 16 20 13.9 20 11.5C20 6.5 24 2 30 2V4Z"/>
+            </svg>
+          </div>
+
+          <div class="fg-quote fg-quote-bottom">
+            <svg width="38" height="28" viewBox="0 0 38 28" xmlns="http://www.w3.org/2000/svg" class="fg-quote-svg">
+              <path d="M14 4C10 4 7 7 7 11C7 13.7 8.5 15.7 10.5 16.8C11.2 17.2 11.5 17.9 11.5 18.6C11.5 19.6 10.7 20.5 9.5 20.5C8 20.5 6.5 19.4 5.6 17.8C4.6 16 4 13.9 4 11.5C4 6.5 8 2 14 2V4ZM30 4C26 4 23 7 23 11C23 13.7 24.5 15.7 26.5 16.8C27.2 17.2 27.5 17.9 27.5 18.6C27.5 19.6 26.7 20.5 25.5 20.5C24 20.5 22.5 19.4 21.6 17.8C20.6 16 20 13.9 20 11.5C20 6.5 24 2 30 2V4Z"/>
+            </svg>
+          </div>
+        </div>
+
+        <div class="fg-pill">
+          <span class="fg-pill-text">robert Tham</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- message box -->
+    <div class="fg-box">
+      <p class="fg-box-text">
+        Independent financial advice tailored to your life from retirement planning to
+        mortgages, investments and family protection.
+      </p>
+    </div>
   </div>
+</div>
 </section>
 
 </body>
