@@ -773,6 +773,227 @@
   box-shadow: 0 20px 60px rgba(0,0,0,0.1); */
 }
 
+/* ===== LAYOUT FOR THE WHOLE FAQ SECTION ===== */
+.faq-section {
+  margin-top: 44px; /* "at 44px top margin" from previous content */
+  width: 100%;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;          /* vertically align illustration + list to same middle line */
+  justify-content: center;
+  gap: 60px;
+  flex-wrap: wrap;
+  font-family: 'Geist', sans-serif;
+}
+
+/* left side illustration */
+.faq-illustration {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  scale: 1.45;
+}
+.faq-illustration img {
+  max-width: 360px;
+  height: auto;
+  display: block;
+}
+
+/* right side faq list */
+.faq-list {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;  /* aligns entire block to the right side visually on desktop */
+  width: 100%;
+  max-width: 550px;       /* matches question frame width */
+}
+
+/* ===== EACH FAQ ITEM ===== */
+.faq-item {
+  width: 100%;
+  max-width: 550px;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 12px;
+  position: relative;
+}
+
+/* hide the checkbox */
+.faq-toggle {
+  display: none;
+}
+
+/* ===== QUESTION ROW FRAME ===== */
+.faq-question {
+  display: flex;
+  align-items: center;            /* vertically center text + icon inside 44px height frame */
+  justify-content: space-between; /* lets us push icon to the far right */
+  width: 100%;
+  height: 44px;                   /* requested 44px frame height */
+  box-sizing: border-box;
+  padding: 10px;                  /* "10 width and height padding" */
+  background-color: #ffffff;      /* fill ffffff */
+  border: 0.5px solid #dfdfdf;    /* 0.5px border dfdfdf */
+  border-radius: 8px;
+  cursor: pointer;
+  position: relative;
+  text-decoration: none;
+  -webkit-tap-highlight-color: transparent;
+  gap: 4px;
+}
+
+/* question text style */
+.faq-question-text {
+  font-family: 'Geist', sans-serif;
+  font-weight: 500;               /* medium */
+  font-size: 18px;
+  line-height: 1.2;
+  letter-spacing: 0.5px;          /* 0.5 spacing */
+  color: #666666;                 /* fill 666666 */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: calc(100% - 40px);   /* leave room for icon */
+}
+
+/* icon container aligned to the right */
+.faq-icon-wrap {
+  position: relative;
+  width: 12px;
+  height: 12px;
+  flex-shrink: 0;
+  margin-left: 16px;
+  /* You said "250px from the question" – interpreting that as icon pushed to the far right.
+     We're already justifying space-between, so it's pinned right edge of the 550px frame. */
+}
+
+/* the 2 strokes that make + and turn into x */
+.faq-icon-line {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 12px;
+  height: 0;
+  border-top: 1.5px solid #666666;      /* stroke thickness 1.5px */
+  border-radius: 999px;                 /* rounded ends */
+  transform-origin: center;
+  translate: -50% -50%;
+  transition: transform 0.18s ease, opacity 0.18s ease;
+}
+
+/* vertical part of + */
+.faq-icon-line.vertical {
+  transform: translate(-50%, -50%) rotate(90deg);
+}
+
+/* horizontal part of +  */
+.faq-icon-line.horizontal {
+  transform: translate(-50%, -50%) rotate(0deg);
+}
+
+/* hover effect pre-click */
+.faq-question:hover .faq-icon-line {
+  border-color: #000000;
+}
+
+/* ===== ANSWER BOX ===== */
+.faq-answer {
+  /* closed by default */
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  pointer-events: none;
+
+  transition: all 0.2s ease;
+}
+
+.faq-answer-inner {
+  width: 100%;
+  max-width: 550px;
+  height: 77px;                       /* fixed height as requested */
+  box-sizing: border-box;
+  margin-top: 8px;                     /* "answer box is 8px from the question" */
+  background-color: #ededed;          /* fill ededed */
+  border: 0.5px solid #e6e6e6;        /* stroke e6e6e6 0.5 */
+  border-radius: 8px;
+  padding: 16px;                      /* "equal padding" */
+  font-family: 'Geist', sans-serif;
+  font-weight: 500;                   /* medium */
+  font-size: 18px;
+  line-height: 1.4;
+  letter-spacing: 0;
+  color: #979797;                     /* fill 979797 */
+  display: flex;
+  align-items: flex-start;
+}
+
+/* ====== OPEN STATE (checkbox:checked) ====== */
+
+/* show the answer when checked */
+.faq-toggle:checked ~ .faq-answer {
+  max-height: 200px;     /* big enough to reveal the 77px box */
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* turn "+" into "x" when open  */
+.faq-toggle:checked + .faq-question .faq-icon-line.vertical {
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+.faq-toggle:checked + .faq-question .faq-icon-line.horizontal {
+  transform: translate(-50%, -50%) rotate(-45deg);
+}
+
+/* on open, darken icon */
+.faq-toggle:checked + .faq-question .faq-icon-line {
+  border-color: #000000;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 800px) {
+  .faq-section {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 40px;
+  }
+
+  .faq-illustration {
+    order: 1;
+  }
+
+  .faq-list {
+    order: 2;
+    align-items: center; /* center block on mobile */
+    max-width: 550px;
+    width: 100%;
+  }
+
+  .faq-item {
+    align-items: center;
+    width: 100%;
+  }
+
+  .faq-question {
+    width: 100%;
+    max-width: 550px;
+  }
+
+  .faq-answer-inner {
+    max-width: 550px;
+  }
+
+  .faq-question-text {
+    white-space: normal;
+  }
+}
+
+
   </style>
 </head>
 
@@ -966,6 +1187,11 @@
 </div>
 </section>
 
+<section class="pricing-headings">
+  <h2 class="pricing-services">Our Services</h2>
+  <h3 class="pricing-plans">Our Pricing Plans</h3>
+</section>
+
 <section class="pricing-tiers">
   <!-- TIER 1 -->
   <div class="plan-card">
@@ -1026,6 +1252,138 @@
       <li class="plan-feature-row">Direct WhatsApp Contact</li>
       <li class="plan-feature-row">Annual Audit Session</li>
     </ul>
+  </div>
+</section>
+
+<section class="pricing-headings">
+  <h2 class="pricing-services">F.A.Qs</h2>
+  <h3 class="pricing-plans">Answers to your FAQs</h3>
+</section>
+
+<section class="faq-section">
+
+  <!-- LEFT SIDE: illustration -->
+  <div class="faq-illustration">
+    <img src="assets/Carton Illurtsration FAQs.svg" alt="FAQs Illustration" />
+  </div>
+
+  <!-- RIGHT SIDE: FAQ list -->
+  <div class="faq-list">
+
+    <!-- FAQ ITEM 1 -->
+    <div class="faq-item">
+      <input type="checkbox" id="faq-1" class="faq-toggle" />
+      <label class="faq-question" for="faq-1">
+        <span class="faq-question-text">Can I keep my money with you?</span>
+
+        <span class="faq-icon-wrap">
+          <span class="faq-icon-line vertical"></span>
+          <span class="faq-icon-line horizontal"></span>
+        </span>
+      </label>
+
+      <div class="faq-answer">
+        <div class="faq-answer-inner">
+          Independent financial advice tailored to your life from retirement planning to mortgages, investments and family protection.
+        </div>
+      </div>
+    </div>
+
+    <!-- FAQ ITEM 2 -->
+    <div class="faq-item">
+      <input type="checkbox" id="faq-2" class="faq-toggle" />
+      <label class="faq-question" for="faq-2">
+        <span class="faq-question-text">Is this regulated advice?</span>
+
+        <span class="faq-icon-wrap">
+          <span class="faq-icon-line vertical"></span>
+          <span class="faq-icon-line horizontal"></span>
+        </span>
+      </label>
+
+      <div class="faq-answer">
+        <div class="faq-answer-inner">
+          Independent financial advice tailored to your life from retirement planning to mortgages, investments and family protection.
+        </div>
+      </div>
+    </div>
+
+    <!-- FAQ ITEM 3 -->
+    <div class="faq-item">
+      <input type="checkbox" id="faq-3" class="faq-toggle" />
+      <label class="faq-question" for="faq-3">
+        <span class="faq-question-text">How often do you review my plan?</span>
+
+        <span class="faq-icon-wrap">
+          <span class="faq-icon-line vertical"></span>
+          <span class="faq-icon-line horizontal"></span>
+        </span>
+      </label>
+
+      <div class="faq-answer">
+        <div class="faq-answer-inner">
+          Independent financial advice tailored to your life from retirement planning to mortgages, investments and family protection.
+        </div>
+      </div>
+    </div>
+
+    <!-- FAQ ITEM 4 -->
+    <div class="faq-item">
+      <input type="checkbox" id="faq-4" class="faq-toggle" />
+      <label class="faq-question" for="faq-4">
+        <span class="faq-question-text">Will this affect my pension?</span>
+
+        <span class="faq-icon-wrap">
+          <span class="faq-icon-line vertical"></span>
+          <span class="faq-icon-line horizontal"></span>
+        </span>
+      </label>
+
+      <div class="faq-answer">
+        <div class="faq-answer-inner">
+          Independent financial advice tailored to your life from retirement planning to mortgages, investments and family protection.
+        </div>
+      </div>
+    </div>
+
+    <!-- FAQ ITEM 5 -->
+    <div class="faq-item">
+      <input type="checkbox" id="faq-5" class="faq-toggle" />
+      <label class="faq-question" for="faq-5">
+        <span class="faq-question-text">Can you help with mortgages?</span>
+
+        <span class="faq-icon-wrap">
+          <span class="faq-icon-line vertical"></span>
+          <span class="faq-icon-line horizontal"></span>
+        </span>
+      </label>
+
+      <div class="faq-answer">
+        <div class="faq-answer-inner">
+          Independent financial advice tailored to your life from retirement planning to mortgages, investments and family protection.
+        </div>
+      </div>
+    </div>
+
+    <!-- FAQ ITEM 6 -->
+    <div class="faq-item">
+      <input type="checkbox" id="faq-6" class="faq-toggle" />
+      <label class="faq-question" for="faq-6">
+        <span class="faq-question-text">What happens if markets crash?</span>
+
+        <span class="faq-icon-wrap">
+          <span class="faq-icon-line vertical"></span>
+          <span class="faq-icon-line horizontal"></span>
+        </span>
+      </label>
+
+      <div class="faq-answer">
+        <div class="faq-answer-inner">
+          Independent financial advice tailored to your life from retirement planning to mortgages, investments and family protection.
+        </div>
+      </div>
+    </div>
+
   </div>
 </section>
 
