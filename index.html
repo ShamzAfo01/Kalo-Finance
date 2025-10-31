@@ -381,7 +381,7 @@
   position: relative;
 
   /* spacing */
-  padding: 60px 0 150px;
+  padding: 200px 0 150px;
   border-top: 1px solid rgba(0, 0, 0, 0.05);
 
   /* centering container */
@@ -568,40 +568,209 @@
 
 /* ========== MESSAGE BOX ========== */
 .fg-box {
-  position: relative; /* needed for absolute chevron */
-  overflow: visible;
-  width: 320px;
-  height: 130px;
-  margin-top: 8px; /* space under top cluster */
+  position: relative;
+  height: auto;            /* let content + padding determine height */
+  margin-top: 8px;         /* space under top cluster */
   background-color: #ededed;
   border: 0.5px solid #d8d8d8;
   border-radius: 12px;
   box-sizing: border-box;
-  padding: 16px;
+  padding: 4px 18px; /* equal vertical padding (top & bottom) */
 
   display: flex;
   align-items: flex-start;
-  justify-content: flex-end; /* align text block to the right side inside */
+  justify-content: flex-start; /* keep text left-aligned inside */
   text-align: left;
   line-height: 150%;
-  margin-top: 8px;
 }
-/* floating chevron that appears on hover */
+
+/* proper filled chevron that appears at the top-right on hover */
 .fg-chevron {
   position: absolute;
   width: 44px;
   height: 44px;
-  top: -42px; /* half height to sit above box */
-  right: 0px; /* match fg-box padding */
+  top: -22px; /* sit half-above the box */
+  right: 16px; /* align with box padding */
   opacity: 0;
   transform: translateY(-8px) scale(0.98);
-  transition: opacity 220ms ease-in, transform 220ms ease-in;
+  transition: opacity 260ms ease-in, transform 260ms ease-in;
   pointer-events: none;
 }
 
 .fg-box:hover .fg-chevron {
   opacity: 1;
   transform: translateY(0) scale(1);
+}
+
+.pricing-headings {
+  margin-top: 120px;              /* exactly 120px below testimonial */
+  display: flex;
+  flex-direction: column;
+  align-items: center;            /* horizontally center text */
+  justify-content: center;
+  text-align: center;             /* ensures both lines are centered */
+  width: 100%;
+}
+
+/* "Our Services" */
+.pricing-services {
+  font-family: 'Great Vibes', cursive;
+  font-weight: 400;
+  font-size: 28px;
+  line-height: 1.2;
+  color: #979797;
+  margin: 0;
+}
+
+/* "Our Pricing Plans" (28px below) */
+.pricing-plans {
+  margin-top: 28px;               /* vertical spacing from 'Our Services' */
+  font-family: 'Geist', sans-serif;
+  font-weight: 300;
+  font-size: 44px;
+  line-height: 1.1;
+  letter-spacing: -0.5px;
+  color: #4a4a4a;
+}
+
+
+/* ===== PRICING TIERS ROW (3 cards centered in page) ===== */
+.pricing-tiers {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;   /* center horizontally */
+  align-items: flex-start;   /* top-align each card evenly */
+  gap: 60px;                 /* spacing between cards */
+  width: 100%;
+  max-width: 1200px;         /* keeps cards nicely contained */
+  margin: 80px auto 0;       /* centers row itself on the page */
+  text-align: left;
+}
+
+/* ===== SINGLE PLAN CARD ===== */
+.plan-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;    /* left-aligned content inside */
+  text-align: left;
+  font-family: 'Geist', sans-serif;
+  color: #4a4a4a;
+
+  /*
+  background: #ffffff;
+  border: 1px solid #e4e4e4;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+  */
+  padding: 32px 28px 36px;
+  width: 320px;
+  box-sizing: border-box;
+  transition: all 0.25s ease;
+}
+
+/* optional hover lift for visual polish */
+.plan-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 16px 40px rgba(0,0,0,0.08);
+  border-radius: 16px;
+  border: 1px solid #e4e4e4;
+}
+
+/* "Basic Plan" / "Pro Plan" / "Enterprise" */
+.plan-name {
+  font-weight: 500;
+  font-size: 18px;
+  color: #666666;
+  letter-spacing: 0;
+  margin: 0;
+}
+
+/* "$30/m" etc. */
+.plan-price {
+  margin-top: 20px;
+  font-weight: 400;
+  font-size: 44px;
+  letter-spacing: -0.2px;
+  color: #676767;
+}
+
+/* CTA button */
+.plan-cta {
+  margin-top: 24px;
+  width: 186px;
+  height: 50px;
+  border-radius: 999px;
+  border: none;
+  cursor: pointer;
+  background: linear-gradient(to top, #1F8600 0%, #2AB300 50%, #C2FFB0 100%);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.12), 0 4px 10px rgba(0,0,0,0.06);
+  font-weight: 500;
+  font-size: 20px;
+  letter-spacing: 0.5px;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.18s ease;
+}
+
+.plan-cta:hover {
+  box-shadow: 0 28px 60px rgba(0,0,0,0.16), 0 6px 14px rgba(0,0,0,0.08);
+  transform: translateY(-1px) scale(1.01);
+}
+
+/* Feature list */
+.plan-features {
+  list-style: none;
+  padding: 0;
+  margin: 32px 0 0 0;
+  width: 100%;
+  font-size: 15px;
+  font-weight: 400;
+  color: #727272;
+  letter-spacing: -0.2px;
+  border-top: 1px solid #e4e4e4;
+}
+
+.plan-feature-row {
+  padding: 16px 0;
+  /* border-bottom: 1px solid #efefef; */
+}
+.plan-feature-row:last-child {
+  border-bottom: none;
+}
+
+/* ========== PRO PLAN HEADER ========== */
+.plan-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;             /* small space between label and plan name */
+  
+}
+
+/* “Most Popular” label */
+.plan-tag {
+  font-family: 'Geist', sans-serif;
+  font-weight: 500;      /* medium */
+  font-size: 13px;
+  letter-spacing: 0;
+  color: #FB6000;
+  background: rgba(251, 96, 0, 0.163);
+  border: 1px solid rgba(251, 96, 0, 0.25);
+  border-radius: 44px;
+  padding: 4px 6px;
+  line-height: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Optional: make middle (featured) card slightly lifted */
+.plan-card.featured {
+  transform: scale(1.04);
+  /* border: 1px solid #2AB300;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.1); */
 }
 
   </style>
@@ -784,8 +953,10 @@
     <div class="fg-box">
       <!-- chevron (hidden by default, shows on hover) -->
       <svg class="fg-chevron" viewBox="0 0 44 44" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-        <path d="M0 44 L22 0 L44 44 Z" fill="#d8d8d8" />
+        <!-- right-facing filled chevron -->
+        <polygon points="14,6 30,22 14,38 18,42 36,22 18,2" fill="#d8d8d8" />
       </svg>
+
       <p class="fg-box-text">
         Independent financial advice tailored to your life from retirement planning to
         mortgages, investments and family protection.
@@ -793,6 +964,69 @@
     </div>
   </div>
 </div>
+</section>
+
+<section class="pricing-tiers">
+  <!-- TIER 1 -->
+  <div class="plan-card">
+    <div class="plan-name">Basic Plan</div>
+    <div class="plan-price">$30/m</div>
+
+    <button class="plan-cta">Get Started</button>
+
+    <ul class="plan-features">
+      <li class="plan-feature-row">Update Cycle</li>
+      <li class="plan-feature-row">Priority Support</li>
+      <li class="plan-feature-row">Monthly Review Call</li>
+      <li class="plan-feature-row">Custom Strategy Notes</li>
+      <li class="plan-feature-row">Portfolio Reporting</li>
+      <li class="plan-feature-row">Tax & Risk Guidance</li>
+      <li class="plan-feature-row">Direct WhatsApp Contact</li>
+      <li class="plan-feature-row">Annual Audit Session</li>
+    </ul>
+  </div>
+
+  <!-- TIER 2 (with Most Popular tag) -->
+<div class="plan-card featured">
+  <div class="plan-header">
+    <div class="plan-name">Pro Plan</div>
+    <span class="plan-tag">Popular</span>
+  </div>
+
+  <div class="plan-price">$60/m</div>
+  <button class="plan-cta">Get Started</button>
+
+  <ul class="plan-features">
+    <li class="plan-feature-row">Update Cycle</li>
+    <li class="plan-feature-row">Priority Support</li>
+    <li class="plan-feature-row">Monthly Review Call</li>
+    <li class="plan-feature-row">Custom Strategy Notes</li>
+    <li class="plan-feature-row">Portfolio Reporting</li>
+    <li class="plan-feature-row">Tax & Risk Guidance</li>
+    <li class="plan-feature-row">Direct WhatsApp Contact</li>
+    <li class="plan-feature-row">Annual Audit Session</li>
+  </ul>
+</div>
+
+
+  <!-- TIER 3 -->
+  <div class="plan-card">
+    <div class="plan-name">Enterprise</div>
+    <div class="plan-price">$120/m</div>
+
+    <button class="plan-cta">Get Started</button>
+
+    <ul class="plan-features">
+      <li class="plan-feature-row">Update Cycle</li>
+      <li class="plan-feature-row">Priority Support</li>
+      <li class="plan-feature-row">Monthly Review Call</li>
+      <li class="plan-feature-row">Custom Strategy Notes</li>
+      <li class="plan-feature-row">Portfolio Reporting</li>
+      <li class="plan-feature-row">Tax & Risk Guidance</li>
+      <li class="plan-feature-row">Direct WhatsApp Contact</li>
+      <li class="plan-feature-row">Annual Audit Session</li>
+    </ul>
+  </div>
 </section>
 
 </body>
