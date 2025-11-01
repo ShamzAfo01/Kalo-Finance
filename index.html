@@ -1359,6 +1359,457 @@
   }
 }
 
+/* =========================
+   RESPONSIVE ENHANCEMENTS
+   (tablet and down)
+   ========================= */
+
+/* Tablet-ish: 900px and down */
+@media (max-width: 900px) {
+
+  /* NAVBAR */
+  .navbar {
+    flex-direction: column;
+    height: auto;
+    gap: 16px;
+    padding: 16px;
+    border-radius: 32px;
+  }
+
+  .right-section {
+    width: 100%;
+    justify-content: center;
+  }
+
+  /* HERO */
+  .hero {
+    margin: 40px auto;
+    padding: 0 16px;
+  }
+
+  .hero-text {
+    font-size: clamp(32px, 6vw, 56px);
+    line-height: 1.15;
+  }
+
+  .hero-subtext {
+    font-size: clamp(15px, 2.5vw, 18px);
+    line-height: 1.4;
+  }
+
+  .hero-buttons {
+    flex-direction: column;
+    width: 100%;
+    max-width: 320px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .get-started {
+    width: 100%;
+    text-align: center;
+  }
+
+  /* HERO IMAGES */
+  .hero-images {
+    gap: 20px;
+  }
+
+  .hero-images img {
+    width: 45vw;
+    max-width: 160px;
+  }
+
+  /* SUBTEXT BLOCK */
+  .hello-text {
+    margin-top: 100px;
+    font-size: 24px;
+  }
+
+  .subtext {
+    font-size: clamp(18px, 3vw, 24px);
+    line-height: 1.2;
+    padding: 0 16px;
+  }
+
+  /* RIBBONS */
+  .ribbon-container,
+  .ribbon-container-2 {
+    margin-top: 80px;
+    padding: 16px 0;
+  }
+
+  .ribbon p,
+  .ribbon-2 p {
+    font-size: 16px;
+    padding: 0 2rem;
+    letter-spacing: 0.5px;
+  }
+
+  /* HERO FRAME */
+  .hero-frame {
+    border-radius: 24px 24px 0 0;
+    margin-top: 80px;
+    padding: 60px 16px 48px;
+  }
+
+  .hero-frame .hero-subtext {
+    font-size: clamp(18px, 3vw, 28px);
+    line-height: 1.3;
+    margin-top: 8px;
+  }
+
+  /* CARDS CAROUSEL */
+  .cards-carousel {
+    margin-top: 60px;
+    overflow-x: hidden;
+  }
+
+  .cards-track {
+    gap: 16px;
+    padding-left: 16px;
+  }
+
+  .hero-card1 {
+    width: 280px;
+    height: auto;
+    min-height: 420px;
+    border-radius: 24px;
+    padding-left: 20px;
+    padding-top: 20px;
+  }
+
+  .card-title {
+    font-size: 28px;
+  }
+
+  .card-description {
+    font-size: 16px;
+    line-height: 1.4;
+    max-width: 95%;
+  }
+
+  .card1-image {
+    width: 240px;
+    max-width: 90%;
+  }
+
+  /* FEEDBACK SECTION (testimonials) */
+  .feedback-section {
+    grid-template-columns: 1fr;
+    row-gap: 48px;
+    padding: 160px 16px 120px;
+    column-gap: 0;
+    text-align: center;
+    max-width: 600px;
+  }
+
+  .feedback-text {
+    align-items: center;
+    text-align: center;
+    max-width: 100%;
+  }
+
+  .feedback-subtitle {
+    font-size: 32px;
+    text-align: center;
+  }
+
+  .feedback-body {
+    font-size: 16px;
+    line-height: 1.5;
+    text-align: center;
+    max-width: 480px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .feedback-indicators {
+    justify-content: center;
+  }
+
+  .feedback-graphic-html {
+    align-items: center;
+    width: 100%;
+    max-width: 320px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .fg-block {
+    width: 100%;
+  }
+
+  .fg-avatar {
+    width: 56px;
+    height: 56px;
+  }
+
+  .fg-pill {
+    width: 160px;
+    height: 34px;
+    border-radius: 24px 24px 10px 24px;
+    font-size: 14px;
+  }
+
+  .fg-box {
+    font-size: 16px;
+    line-height: 1.4;
+  }
+
+  .fg-chevron {
+    width: 36px;
+    height: 36px;
+    top: -18px;
+    right: 12px;
+  }
+
+  /* PRICING SECTION */
+  .pricing-headings {
+    margin-top: 80px;
+    padding: 0 16px;
+  }
+
+  .pricing-services {
+    font-size: 24px;
+  }
+
+  .pricing-plans {
+    font-size: 32px;
+    line-height: 1.2;
+  }
+
+  .pricing-tiers {
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+    margin-top: 60px;
+  }
+
+  .plan-card {
+    width: 90%;
+    max-width: 360px;
+    padding: 28px 24px 32px;
+  }
+
+  .plan-price {
+    font-size: 36px;
+  }
+
+  .plan-cta {
+    width: 100%;
+    max-width: 220px;
+    font-size: 18px;
+  }
+
+  .plan-features {
+    font-size: 14px;
+  }
+
+  /* FAQ SECTION */
+  .pricing-headings + .faq-section {
+    margin-top: 32px;
+  }
+
+  .faq-section {
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+    padding: 0 16px 80px;
+    text-align: left;
+  }
+
+  .faq-illustration {
+    order: 1;
+    scale: 1.2;
+    margin-right: 0;
+  }
+
+  .faq-illustration img {
+    max-width: 240px;
+    margin-right: 0;
+  }
+
+  .faq-list {
+    order: 2;
+    align-items: center;
+    max-width: 100%;
+  }
+
+  .faq-item {
+    width: 100%;
+    max-width: 500px;
+  }
+
+  .faq-question {
+    max-width: 500px;
+    width: 100%;
+  }
+
+  .faq-answer-inner {
+    max-width: 500px;
+    width: 100%;
+    font-size: 16px;
+    line-height: 1.4;
+  }
+
+  .faq-question-text {
+    white-space: normal;
+    font-size: 16px;
+    line-height: 1.3;
+  }
+
+  /* FOOTER: subscribe callout ("Stay Updated!") */
+  .footer-updates {
+    top: 200px;
+    width: 100%;
+    max-width: 90%;
+    padding: 0 16px;
+  }
+
+  .footer-heading {
+    font-size: 32px;
+    line-height: 1.2;
+    margin-bottom: 32px;
+  }
+
+  .subscribe-form {
+    flex-direction: column;
+    align-items: stretch;
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    gap: 12px;
+    border-radius: 24px;
+    padding: 16px;
+  }
+
+  .subscribe-input {
+    width: 100%;
+    font-size: 16px;
+    height: 48px;
+  }
+
+  .subscribe-btn {
+    width: 100%;
+    height: 48px;
+    font-size: 16px;
+  }
+
+  /* FOOTER GRID: left block + right block now stacks */
+  .footer-grid {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 380px 16px 0; /* reduce top padding on mobile so you don't get a massive dead zone */
+    row-gap: 48px;
+    max-width: 100%;
+  }
+
+  .footer-left-block {
+    max-width: 100%;
+  }
+
+  .footer-brand-block {
+    max-width: 100%;
+  }
+
+  .footer-desc {
+    font-size: 16px;
+    line-height: 1.4;
+  }
+
+  /* Company / Legal row becomes vertical on smaller screens */
+  .footer-link-row {
+    flex-direction: column;
+    row-gap: 32px;
+    column-gap: 0;
+    margin-top: 60px; /* slightly tighter than 90px for mobile */
+  }
+
+  .footer-link-col {
+    gap: 12px;
+  }
+
+  .footer-col-heading {
+    font-size: 16px;
+    line-height: 1.3;
+  }
+
+  .footer-mini-link {
+    font-size: 16px;
+    line-height: 1.3;
+  }
+
+  /* Right block moves below left block and aligns full-width */
+  .footer-right-block {
+    border-top: 1px solid rgba(255,255,255,0.12);
+    padding-top: 24px;
+    max-width: 100%;
+    width: 100%;
+    color: #6f6f6f;
+  }
+
+  .footer-contact-block {
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+
+  .footer-contact-row {
+    font-size: 16px;
+    line-height: 1.4;
+  }
+
+  .footer-bottom-inline {
+    padding-top: 16px;
+    border-top: 1px solid rgba(255,255,255,0.12);
+  }
+
+  .footer-copy {
+    font-size: 16px;
+    line-height: 1.4;
+    text-align: left;
+  }
+}
+
+
+/* Phone-ish: 480px and down */
+@media (max-width: 480px) {
+
+  .logo {
+    font-size: 28px;
+    letter-spacing: -1px;
+  }
+
+  .hero-text {
+    font-size: clamp(28px, 8vw, 40px);
+  }
+
+  .hero-subtext {
+    font-size: 15px;
+  }
+
+  .hello-text {
+    font-size: 22px;
+  }
+
+  .pricing-plans {
+    font-size: 28px;
+  }
+
+  .plan-price {
+    font-size: 32px;
+  }
+
+  .plan-cta {
+    font-size: 16px;
+    height: 44px;
+  }
+
+  .footer-heading {
+    font-size: 28px;
+  }
+}
 
   </style>
 </head>
