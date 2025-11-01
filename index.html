@@ -1152,127 +1152,147 @@
   box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.35);
 }
 
-/* ===== OUTER FOOTER BACKGROUND ===== */
-/* Make sure your outer .footer has the dark band background you chose */
+/* =========================
+   OUTER FOOTER WRAPPER
+   ========================= */
 .footer {
   /* background-color: #0f0f0f; */
-  padding-bottom: 48px;             /* breathing room at the bottom */
   color: #FFFFFF;
   font-family: 'Geist', sans-serif;
+  padding-bottom: 48px;
 }
 
-/* ===== INNER GRID POSITIONING ===== */
-
+/* =========================
+   MAIN GRID (LEFT SECTION + RIGHT SECTION)
+   ========================= */
 .footer-grid {
   display: flex;
   flex-direction: row;
   align-items: flex-start;
-  justify-content: flex-start;
+  justify-content: space-between;
 
-  width: 100%;
   max-width: 1200px;
+  width: 100%;
   margin: 0 auto;
 
-  /* pushes ALL visible footer content down into the darker region */
-  padding-top: 520px; /* sits low in the footer band */
-  column-gap: 150px;  /* horizontal spacing between left + right groups */
+  /* push content deep into darker region */
+  padding-top: 480px;
 }
 
-/* LEFT + RIGHT columns */
-.footer-col {
+/* =========================
+   LEFT SECTION
+   - Brand block on top
+   - 90px gap
+   - Below that: Company + Legal columns, aligned on same top baseline
+   ========================= */
+.footer-left-block {
   display: flex;
   flex-direction: column;
-  color: #FFFFFF;
-  font-family: 'Geist', sans-serif;
-}
-
-/* LEFT COLUMN WIDTH */
-.footer-left {
+  align-items: flex-start;
+  flex-shrink: 0;
   max-width: 510px;
-  min-width: 250px;
+  color: #FFFFFF;
+  /* everything left aligned */
 }
 
-/* RIGHT COLUMN WIDTH */
-.footer-right {
-  min-width: 150px;
-  max-width: 250px;
+/* BRAND (Kalo Fi. + paragraph) */
+.footer-brand-block {
+  display: flex;
+  flex-direction: column;
+  max-width: 510px;
 }
 
-/* ===== BRAND BLOCK (logo + description) ===== */
-
+/* "Kalo Fi." */
 .footer-logo {
   font-weight: 400;
   font-size: 22px;
-  line-height: 0.8;         /* 80% */
-  letter-spacing: -0.02em;  /* -2% */
+  line-height: 0.8;               /* 80% */
+  letter-spacing: -0.02em;        /* -2% */
   color: #FFFFFF;
   margin: 0 0 20px 0;
 }
 
+/* description paragraph */
 .footer-desc {
   font-weight: 400;
   font-size: 18px;
   line-height: 130%;
   letter-spacing: -0.02em;
-  color: #696969;           /* muted grey body copy you chose */
+  color: #696969;                 /* muted grey body copy */
   max-width: 509px;
-  margin: 0 0 32px 0;       /* space before Blog / Contact us */
+  margin: 0;
 }
 
-/* ===== MINI LINKS UNDER BRAND ===== */
+/* BELOW BRAND: COMPANY / LEGAL ROW */
+.footer-link-row {
+  margin-top: 90px;               /* 90px below brand block */
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;         /* align tops of both cols */
+  column-gap: 190px;               /* spacing between Company and Legal columns */
+}
 
-.footer-mini-links {
+/* an individual column in that row */
+.footer-link-col {
   display: flex;
   flex-direction: column;
   gap: 16px;
+  min-width: 150px;
 }
 
+/* column headings e.g. "Company", "Legal" */
+.footer-col-heading {
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 130%;
+  letter-spacing: -0.02em;
+  color: #FFFFFF;                 /* headings stay white */
+}
+
+/* links under headings: Blog, Careers, Terms, Privacy */
 .footer-mini-link {
   text-decoration: none;
   font-weight: 400;
   font-size: 18px;
   line-height: 130%;
   letter-spacing: -0.02em;
-  color: #696969;           /* Blog / Contact us in muted grey */
+  color: #696969;                 /* muted grey for all sub-links */
 }
 
-/* ===== LEGAL COLUMN (RIGHT SIDE) ===== */
+.footer-right-block {
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  min-width: 250px;
+  max-width: 300px;
+  text-align: left;
+  color: #6f6f6f;
+  padding-top: 230px;
+}
 
-.footer-links-col {
+.footer-contact-block {
   display: flex;
   flex-direction: column;
   gap: 16px;
-  min-width: 150px;
+  margin-bottom: 24px;
 }
 
-.footer-link-legal-main {
-  color: #FFFFFF;           /* "Legal" = white */
+.footer-contact-row {
   font-weight: 400;
   font-size: 18px;
   line-height: 130%;
   letter-spacing: -0.02em;
+  color: #6f6f6f;                /* high-contrast white for contact info */
 }
 
-.footer-link {
-  text-decoration: none;
-  font-weight: 400;
-  font-size: 18px;
-  line-height: 130%;
-  letter-spacing: -0.02em;
+.contact-text {
+  color: #6f6f6f;
 }
 
-.footer-link-dim {
-  color: #696969;           /* Terms / Privacy = muted grey */
-}
-
-/* ===== COPYRIGHT / CONTACT ROW AT THE VERY BOTTOM ===== */
-
-.footer-bottom {
-  max-width: 1200px;
-  margin: 60px auto 0 auto;
-  width: 100%;
-  border-top: 1px solid rgba(255,255,255,0.12);
-  padding-top: 24px;
+/* COPYRIGHT (right block bottom) */
+.footer-bottom-inline {
+  /* border-top: 1px solid rgba(255,255,255,0.12); */
+  padding-top: 16px;
 }
 
 .footer-copy {
@@ -1280,36 +1300,43 @@
   font-size: 18px;
   line-height: 150%;
   letter-spacing: -0.02em;
-  color: #FFFFFF;
+  color: #6f6f6f;
+  margin: 0;
   opacity: 1;
-  text-align: left;
 }
 
-.footer-support-email {
-  color: #FFFFFF;           /* keep support email high-contrast white */
-  font-size: 18px;
-  line-height: 130%;
-  letter-spacing: -0.02em;
-  display: inline-block;
-  margin-top: 8px;
-}
 
-/* ===== RESPONSIVE ===== */
-
+/* =========================
+   RESPONSIVE
+   ========================= */
 @media (max-width: 900px) {
   .footer-grid {
     flex-direction: column;
-    padding-top: 380px;      /* still sits low but not crazy on tablet */
+    padding-top: 380px;          /* still sits low but tighter on tablet */
     row-gap: 40px;
+  }
+
+  /* left block stays stacked naturally */
+  .footer-left-block {
+    max-width: 100%;
+  }
+
+  /* company/legal row becomes vertical on tablet */
+  .footer-link-row {
+    flex-direction: column;
+    row-gap: 32px;
     column-gap: 0;
   }
 
-  .footer-bottom {
-    text-align: center;
+  /* right block moves under left block and gets a soft divider */
+  .footer-right-block {
+    border-top: 1px solid rgba(255,255,255,0.12);
+    padding-top: 24px;
+    max-width: 100%;
   }
 
   .footer-copy {
-    text-align: center;
+    text-align: left;
   }
 }
 
@@ -1323,15 +1350,15 @@
     line-height: 140%;
   }
 
+  .footer-col-heading,
   .footer-mini-link,
-  .footer-link-legal-main,
-  .footer-link,
-  .footer-support-email,
+  .footer-contact-row,
   .footer-copy {
     font-size: 16px;
     line-height: 140%;
   }
 }
+
 
   </style>
 </head>
@@ -1745,38 +1772,53 @@
   <div class="footer-grid">
     
     <!-- LEFT COLUMN -->
-    <div class="footer-col footer-left">
-      <div class="footer-brand">
-        <div class="footer-logo">Kalo Fi.</div>
-        <div class="footer-desc">
-          Independent financial advice tailored to your life from retirement planning
-          to mortgages, investments and family protection.
-        </div>
-      </div>
+    <footer class="footer">
+  <div class="footer-inner">
 
-      <nav class="footer-mini-links">
+    <!-- BRAND / DESCRIPTION TOP SECTION -->
+    <div class="footer-brand-block">
+      <div class="footer-logo">Kalo Fi.</div>
+      <div class="footer-desc">
+        Independent financial advice tailored to your life from retirement
+        planning to mortgages, investments and family protection.
+      </div>
+    </div>
+
+    <!-- BELOW BRAND: COMPANY / LEGAL ROW -->
+    <div class="footer-link-row">
+      <!-- COLUMN: COMPANY -->
+      <nav class="footer-link-col">
+        <div class="footer-col-heading">Company</div>
         <a class="footer-mini-link footer-link-default" href="#">Blog</a>
-        <a class="footer-mini-link footer-link-default" href="#">Contact us</a>
+        <a class="footer-mini-link footer-link-default" href="#">Careers</a>
+      </nav>
+
+      <!-- COLUMN: LEGAL -->
+      <nav class="footer-link-col">
+        <div class="footer-col-heading">Legal</div>
+        <a class="footer-mini-link footer-link-dim" href="#">Terms and conditions</a>
+        <a class="footer-mini-link footer-link-dim" href="#">Privacy policy</a>
       </nav>
     </div>
 
-    <!-- RIGHT COLUMN -->
-    <div class="footer-col footer-right">
-      <div class="footer-links-col">
-        <div class="footer-link-legal-main">Legal</div>
-        <a class="footer-link footer-link-dim" href="#">Terms and conditions</a>
-        <a class="footer-link footer-link-dim" href="#">Privacy policy</a>
+  </div>
+</footer>
+ <!-- RIGHT SIDE -->
+    <div class="footer-right-block">
+      <div class="footer-contact-block">
+        <div class="footer-contact-row">
+          <span class="contact-text">support@getkalofi.com</span>
+        </div>
+        <div class="footer-contact-row">
+          <span class="contact-text">+44 (0) 0000 000000</span>
+        </div>
+      </div>
+
+      <div class="footer-bottom-inline">
+        <p class="footer-copy">© 2025 Kalo Fi. All rights reserved.</p>
       </div>
     </div>
 
-  </div>
-
-  <div class="footer-bottom">
-    <p class="footer-copy">
-      © 2025 Kalo Fi. All rights reserved.
-      <br />
-      <span class="footer-support-email">support@getkalofi.com</span>
-    </p>
   </div>
 </footer>
 
