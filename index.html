@@ -802,6 +802,7 @@
   max-width: 360px;
   height: auto;
   display: block;
+  margin-right: 50px;
 }
 
 /* right side faq list */
@@ -819,7 +820,7 @@
   max-width: 550px;
   display: flex;
   flex-direction: column;
-  margin-bottom: 12px;
+  margin-bottom: 10px;
   position: relative;
 }
 
@@ -851,9 +852,9 @@
 .faq-question-text {
   font-family: 'Geist', sans-serif;
   font-weight: 500;               /* medium */
-  font-size: 18px;
+  font-size: 16px;
   line-height: 1.2;
-  letter-spacing: 0.5px;          /* 0.5 spacing */
+  letter-spacing: 0px;          /* 0.5 spacing */
   color: #666666;                 /* fill 666666 */
   white-space: nowrap;
   overflow: hidden;
@@ -993,6 +994,344 @@
   }
 }
 
+.site-footer {
+  position: relative;
+  width: 100%;
+  height: 950px;
+  overflow: hidden;
+
+  /* Smooth cinematic vertical gradient */
+  background: linear-gradient(
+    to bottom,
+    /* top whites */
+    #ffffff 0px,
+    #ffffff 100px,
+    #f6fff4 160px,
+
+    /* soft fade into gentle green tint */
+    #d9ffd0 210px,
+    #b2fba0 250px,
+    #75ec60 310px,
+    #44cf2f 380px,
+
+    /* richer brand green area */
+    #2ab300 460px,
+    #1f8600 540px,
+
+    /* transition to shadowed green-black blend */
+    #113300 650px,
+    #081a00 740px,
+
+    /* very deep green-black fading to true black */
+    #020602 840px,
+    #000000 950px
+  );
+
+  /* subtle soft overlay to even smoother blend */
+  background-blend-mode: normal;
+}
+
+/* glowing soft blur mid–bottom region */
+.site-footer::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 480px;
+  transform: translateX(-50%);
+  width: 800px;
+  height: 400px;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(42, 179, 0, 0.4) 0%,     /* lush green glow */
+    rgba(10, 80, 0, 0.15) 40%,    /* muted mid */
+    rgba(0, 0, 0, 0) 80%          /* fade to invisible */
+  );
+  filter: blur(120px);
+  opacity: 0.5;
+  mix-blend-mode: soft-light;
+  pointer-events: none;
+}
+
+/* footer content */
+.footer-inner {
+  position: relative;
+  z-index: 1;
+  max-width: 1200px;
+  padding: 80px 24px;
+  margin: 0 auto;
+  font-family: 'Geist', sans-serif;
+  color: #ffffff;
+}
+
+/* CONTAINER */
+.footer-updates {
+  position: absolute;
+  top: 258px; /* from your coordinates */
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  width: 100%;
+  max-width: 565px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 36px;
+  z-index: 2;
+}
+
+/* "Stay Updated!" heading */
+.footer-heading {
+  font-family: 'Geist', sans-serif;
+  font-weight: 300;             /* Light */
+  font-size: 44px;
+  line-height: 110%;
+  letter-spacing: -0.03em;      /* -3% spacing */
+  color: #666666;
+  margin: 0;
+  opacity: 1;
+  margin-bottom: 60px;
+}
+
+/* Subscribe box */
+.subscribe-form {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #ffffff;
+  border: 1px solid #949494;
+  border-radius: 99px;
+  padding: 10px 14px;
+  width: 565px;
+  height: 75px;
+  box-sizing: border-box;
+  gap: 10px;
+}
+
+/* Input */
+.subscribe-input {
+  flex: 1;
+  height: 52px;
+  border-radius: 32px;
+  border: 0.3px solid #ffffff;
+  padding: 0 14px;
+  font-family: 'Geist', sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 130%;
+  letter-spacing: -0.02em;
+  color: #696969;
+  background: #ffffff;
+  outline: none;
+}
+
+.subscribe-input::placeholder {
+  color: #696969;
+  opacity: 0.8;
+}
+
+/* Subscribe button */
+.subscribe-btn {
+  width: 144px;
+  height: 45px;
+  border-radius: 24px;
+  border: 0.3px solid #208a00;
+  background: linear-gradient(180deg, #2ab300 0.66%, #196701 140.85%);
+  /* box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); */
+  color: #ffffff;
+  font-family: 'Geist', sans-serif;
+  font-weight: 500; /* Medium */
+  font-size: 18px;
+  letter-spacing: 0.01em; /* 1% */
+  line-height: 110%;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.subscribe-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.35);
+}
+
+/* ===== OUTER FOOTER BACKGROUND ===== */
+/* Make sure your outer .footer has the dark band background you chose */
+.footer {
+  /* background-color: #0f0f0f; */
+  padding-bottom: 48px;             /* breathing room at the bottom */
+  color: #FFFFFF;
+  font-family: 'Geist', sans-serif;
+}
+
+/* ===== INNER GRID POSITIONING ===== */
+
+.footer-grid {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: flex-start;
+
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+
+  /* pushes ALL visible footer content down into the darker region */
+  padding-top: 520px; /* sits low in the footer band */
+  column-gap: 150px;  /* horizontal spacing between left + right groups */
+}
+
+/* LEFT + RIGHT columns */
+.footer-col {
+  display: flex;
+  flex-direction: column;
+  color: #FFFFFF;
+  font-family: 'Geist', sans-serif;
+}
+
+/* LEFT COLUMN WIDTH */
+.footer-left {
+  max-width: 510px;
+  min-width: 250px;
+}
+
+/* RIGHT COLUMN WIDTH */
+.footer-right {
+  min-width: 150px;
+  max-width: 250px;
+}
+
+/* ===== BRAND BLOCK (logo + description) ===== */
+
+.footer-logo {
+  font-weight: 400;
+  font-size: 22px;
+  line-height: 0.8;         /* 80% */
+  letter-spacing: -0.02em;  /* -2% */
+  color: #FFFFFF;
+  margin: 0 0 20px 0;
+}
+
+.footer-desc {
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 130%;
+  letter-spacing: -0.02em;
+  color: #696969;           /* muted grey body copy you chose */
+  max-width: 509px;
+  margin: 0 0 32px 0;       /* space before Blog / Contact us */
+}
+
+/* ===== MINI LINKS UNDER BRAND ===== */
+
+.footer-mini-links {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.footer-mini-link {
+  text-decoration: none;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 130%;
+  letter-spacing: -0.02em;
+  color: #696969;           /* Blog / Contact us in muted grey */
+}
+
+/* ===== LEGAL COLUMN (RIGHT SIDE) ===== */
+
+.footer-links-col {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  min-width: 150px;
+}
+
+.footer-link-legal-main {
+  color: #FFFFFF;           /* "Legal" = white */
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 130%;
+  letter-spacing: -0.02em;
+}
+
+.footer-link {
+  text-decoration: none;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 130%;
+  letter-spacing: -0.02em;
+}
+
+.footer-link-dim {
+  color: #696969;           /* Terms / Privacy = muted grey */
+}
+
+/* ===== COPYRIGHT / CONTACT ROW AT THE VERY BOTTOM ===== */
+
+.footer-bottom {
+  max-width: 1200px;
+  margin: 60px auto 0 auto;
+  width: 100%;
+  border-top: 1px solid rgba(255,255,255,0.12);
+  padding-top: 24px;
+}
+
+.footer-copy {
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 150%;
+  letter-spacing: -0.02em;
+  color: #FFFFFF;
+  opacity: 1;
+  text-align: left;
+}
+
+.footer-support-email {
+  color: #FFFFFF;           /* keep support email high-contrast white */
+  font-size: 18px;
+  line-height: 130%;
+  letter-spacing: -0.02em;
+  display: inline-block;
+  margin-top: 8px;
+}
+
+/* ===== RESPONSIVE ===== */
+
+@media (max-width: 900px) {
+  .footer-grid {
+    flex-direction: column;
+    padding-top: 380px;      /* still sits low but not crazy on tablet */
+    row-gap: 40px;
+    column-gap: 0;
+  }
+
+  .footer-bottom {
+    text-align: center;
+  }
+
+  .footer-copy {
+    text-align: center;
+  }
+}
+
+@media (max-width: 520px) {
+  .footer-logo {
+    font-size: 20px;
+  }
+
+  .footer-desc {
+    font-size: 16px;
+    line-height: 140%;
+  }
+
+  .footer-mini-link,
+  .footer-link-legal-main,
+  .footer-link,
+  .footer-support-email,
+  .footer-copy {
+    font-size: 16px;
+    line-height: 140%;
+  }
+}
 
   </style>
 </head>
@@ -1387,5 +1726,62 @@
   </div>
 </section>
 
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-updates">
+  <h2 class="footer-heading">Stay Updated!</h2>
+
+  <form class="subscribe-form">
+    <input
+      type="email"
+      class="subscribe-input"
+      placeholder="name@gmail.com"
+      required
+    />
+    <button type="submit" class="subscribe-btn">Subscribe</button>
+  </form>
+</div>
+<footer class="footer">
+  <div class="footer-grid">
+    
+    <!-- LEFT COLUMN -->
+    <div class="footer-col footer-left">
+      <div class="footer-brand">
+        <div class="footer-logo">Kalo Fi.</div>
+        <div class="footer-desc">
+          Independent financial advice tailored to your life from retirement planning
+          to mortgages, investments and family protection.
+        </div>
+      </div>
+
+      <nav class="footer-mini-links">
+        <a class="footer-mini-link footer-link-default" href="#">Blog</a>
+        <a class="footer-mini-link footer-link-default" href="#">Contact us</a>
+      </nav>
+    </div>
+
+    <!-- RIGHT COLUMN -->
+    <div class="footer-col footer-right">
+      <div class="footer-links-col">
+        <div class="footer-link-legal-main">Legal</div>
+        <a class="footer-link footer-link-dim" href="#">Terms and conditions</a>
+        <a class="footer-link footer-link-dim" href="#">Privacy policy</a>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="footer-bottom">
+    <p class="footer-copy">
+      © 2025 Kalo Fi. All rights reserved.
+      <br />
+      <span class="footer-support-email">support@getkalofi.com</span>
+    </p>
+  </div>
+</footer>
+
+
+
 </body>
 </html>
+  }
